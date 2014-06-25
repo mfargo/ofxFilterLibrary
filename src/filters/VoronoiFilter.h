@@ -13,7 +13,7 @@
 
 class VoronoiFilter : public AbstractFilter {
 public:
-	VoronoiFilter(ofTexture & texture, int numPasses=7);
+	VoronoiFilter(ofTexture & texture, int numPasses=5);
 	virtual ~VoronoiFilter();
 
     virtual void    begin();

@@ -17,7 +17,7 @@ VoronoiFilter::VoronoiFilter(ofTexture & texture, int numPasses) : AbstractFilte
     _ping.allocate(getWidth(), getHeight());
     _pong.allocate(getWidth(), getHeight());    
     
-        // finna prolly move this to the begin function before the iterative part
+        // prolly move this to the begin function before the iterative part
     _mesh.setMode(OF_PRIMITIVE_POINTS);
     for (int i=0; i<240; i++) {
         ofVec2f v = ofVec2f(ofRandom(getWidth()), ofRandom(getHeight()));
@@ -216,25 +216,24 @@ int VoronoiFilter::_nextPowerOfTwo(ofVec2f v) {
 
 void VoronoiFilter::begin() {
         /// this will be used to color my verts
+    /*
     _texture.readToPixels(_pixels);
     for (int i=0; i<_mesh.getNumVertices(); i++)
         _mesh.getColors()[i].set(_pixels.getColor(_mesh.getVertex(i).x, _mesh.getVertex(i).y));
+     */
+    updateParameter("sampleStep", 0.5);
+    _shader.begin();
+    _updateParameters(&_shader);
     _ping.begin();
+    _texture.bind();
     ofClear(0,0,0,0);
-    _mesh.draw();
+    //_mesh.draw();
+    _texture.unbind();
     _ping.end();
 }
 
 void VoronoiFilter::end() {
         //テクスチャーの描写を素通りして
-    
-    _shader.begin();
-    updateParameter("sampleStep", 0.5f);
-    _updateParameters(&_shader);
-    _pong.begin();
-    _ping.draw(0, 0);
-    _pong.end();
-    _shader.end();
     
     for (int i=1; i<=_numPasses; i++) {
         _shader.begin();
@@ -242,14 +241,18 @@ void VoronoiFilter::end() {
         updateParameter("sampleStep", step);
         _updateParameters(&_shader);
         if (i%2==1) {
-            _ping.begin();
-            _pong.draw(0, 0);
-            _ping.end();
+            _pong.begin();
+            _ping.bind();
+            _mesh.draw();
+            _ping.unbind();
+            _pong.end();
         }
         else {
-            _pong.begin();
-            _ping.draw(0, 0);
-            _pong.end();
+            _ping.begin();
+            _pong.bind();
+            _mesh.draw();
+            _pong.unbind();
+            _ping.end();
         }
         _shader.end();
     }
