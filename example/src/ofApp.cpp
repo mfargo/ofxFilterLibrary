@@ -39,7 +39,7 @@ void ofApp::draw(){
     _filters[_currentFilter]->end();
     ofPopMatrix();
     ofSetColor(255);
-    ofDrawBitmapString( _filters[_currentFilter]->getName() + " Filter\n"+ _filters[_currentFilter]->getInstructions(), ofPoint(40, 20));
+    //ofDrawBitmapString( _filters[_currentFilter]->getName() + " Filter\n"+ _filters[_currentFilter]->getInstructions(), ofPoint(40, 20));
 }
 
 void ofApp::keyPressed(int key){
