@@ -4,7 +4,10 @@ void ofApp::setup(){
     ofDisableArbTex();
     _video.initGrabber(640, 480);
     _currentFilter = 0;
-    
+
+    _filters.push_back(new GaussianBlurFilter(_video.getWidth(), _video.getHeight()));
+    _filters.push_back(new HarrisCornerDetectionFilter(_video.getWidth(), _video.getHeight()));
+    _filters.push_back(new XYDerivativeFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new KuwaharaFilter());
     _filters.push_back(new PerlinPixellationFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new ZoomBlurFilter());
@@ -12,6 +15,7 @@ void ofApp::setup(){
     _filters.push_back(new BilateralFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new SobelEdgeDetectionFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new TiltShiftFilter(_video.getTextureReference()));
+    _filters.push_back(new VoronoiFilter(_video.getTextureReference()));    
     _filters.push_back(new CGAColorspaceFilter());
     _filters.push_back(new ErosionFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new LookupFilter(_video.getWidth(), _video.getHeight(), "img/lookup_amatorka.png"));
@@ -20,7 +24,6 @@ void ofApp::setup(){
     _filters.push_back(new VignetteFilter());
     _filters.push_back(new ToonFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new PixelateFilter(_video.getWidth(), _video.getHeight()));
-    _filters.push_back(new VoronoiFilter(_video.getTextureReference()));
 
 }
 
@@ -37,7 +40,7 @@ void ofApp::draw(){
     _filters[_currentFilter]->end();
     ofPopMatrix();
     ofSetColor(255);
-    ofDrawBitmapString(_filters[_currentFilter]->getInstructions(), ofPoint(40, 20));
+    ofDrawBitmapString( _filters[_currentFilter]->getName() + " Filter\n"+ _filters[_currentFilter]->getInstructions(), ofPoint(40, 20));
 }
 
 void ofApp::keyPressed(int key){
