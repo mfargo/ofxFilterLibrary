@@ -9,6 +9,7 @@
 #ifndef __filterSandbox__ParametricObject__
 #define __filterSandbox__ParametricObject__
 
+#include "AbstractParameterV.h"
 #include "ParameterF.h"
 #include "ParameterI.h"
 #include "ParameterT.h"
@@ -16,6 +17,8 @@
 #include "Parameter3f.h"
 #include "Parameter4f.h"
 #include "ParameterMatrix4f.h"
+#include "Parameter2fv.h"
+#include "Parameter3fv.h"
 
 
 class ParametricObject {
@@ -32,11 +35,13 @@ public:
     AbstractParameter * updateParameter(string name, ofVec4f value) { ((Parameter4f *)_parameters[name])->setValue(value); }
     AbstractParameter * updateParameter(string name, ofMatrix4x4 value) { ((ParameterMatrix4f *)_parameters[name])->setValue(value); }
     AbstractParameter * updateParameter(string name, ofTexture value) { ((ParameterT *)_parameters[name])->setValue(value); }
+    AbstractParameter * updateParameter(string name, float * value) { ((AbstractParameterV *)_parameters[name])->setValue(value); }
     AbstractParameter * getParameter(string name) { return _parameters[name]; }
     
     // utility
     virtual void    describeParameters();
-
+    string          getName() { return _name; }
+    
 protected:
     string          _name;
     void            _updateParameters(ofShader * shader);

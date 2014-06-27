@@ -53,6 +53,12 @@ void ParametricObject::_updateParameter(ofShader * shader, AbstractParameter * p
         case FILTER_PARAMETER_MATRIX4F:
             shader->setUniformMatrix4f(parameter->getName(), ((ParameterMatrix4f *)parameter)->getValue() );
             break;
+        case FILTER_PARAMETER_2FV:
+            shader->setUniform2fv(parameter->getName(), ((Parameter2fv *)parameter)->getValue() , ((Parameter2fv *)parameter)->getNumValues());
+            break;
+        case FILTER_PARAMETER_3FV:
+            shader->setUniform3fv(parameter->getName(), ((Parameter3fv *)parameter)->getValue() , ((Parameter3fv *)parameter)->getNumValues());
+            break;
         default:
             break;
     }
@@ -75,9 +81,9 @@ string ParametricObject::_getNameForParameterType(OFX_FILTER_PARAMETER_TYPE type
         case FILTER_PARAMETER_3F: return "vec3f"; break;
         case FILTER_PARAMETER_4F: return "vec4f"; break;
         case FILTER_PARAMETER_MATRIX4F: return "matrix4f"; break;
-        default:
-            return "";
-            break;
+        case FILTER_PARAMETER_2FV: return "2fv"; break;
+        case FILTER_PARAMETER_3FV: return "3fv"; break;
+        default: return ""; break;
     }
 }
 
