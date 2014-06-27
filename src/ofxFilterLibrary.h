@@ -24,5 +24,8 @@
 #include "BilateralFilter.h"
 #include "ZoomBlurFilter.h"
 #include "ErosionFilter.h"
+#include "XYDerivativeFilter.h"
+#include "GrayscaleFilter.h"
+#include "HarrisCornerDetectionFilter.h"
 
 #endif
