@@ -28,4 +28,6 @@
 #include "GrayscaleFilter.h"
 #include "HarrisCornerDetectionFilter.h"
 
+#include "FilterChain.h"
+
 #endif
