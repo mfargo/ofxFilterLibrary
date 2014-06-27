@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A24F19F7195D26D700BD1011 /* ColorPackingFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F19F5195D26D700BD1011 /* ColorPackingFilter.cpp */; };
+		A24F19FA195D340D00BD1011 /* AbstractPingPongRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F19F8195D340D00BD1011 /* AbstractPingPongRenderer.cpp */; };
+		A24F19FD195D36E400BD1011 /* Abstract3x3PingPongFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F19FB195D36E400BD1011 /* Abstract3x3PingPongFilter.cpp */; };
+		A2A9C119195D0F17002D2BDD /* XYDerivativeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A9C117195D0F17002D2BDD /* XYDerivativeFilter.cpp */; };
+		A2A9C11C195D11E3002D2BDD /* ThresholdedNonMaximumSuppressionFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A9C11A195D11E3002D2BDD /* ThresholdedNonMaximumSuppressionFilter.cpp */; };
+		A2A9C11F195D1624002D2BDD /* Abstract3x3TextureSamplingFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A9C11D195D1624002D2BDD /* Abstract3x3TextureSamplingFilter.cpp */; };
+		A2A9C122195D1AA8002D2BDD /* HarrisCornerDetectionFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A9C120195D1AA8002D2BDD /* HarrisCornerDetectionFilter.cpp */; };
+		A2A9C125195D1CA8002D2BDD /* GrayscaleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A9C123195D1CA8002D2BDD /* GrayscaleFilter.cpp */; };
 		A2DFD9B5195AD83900552CA6 /* AbstractFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DFD987195AD83900552CA6 /* AbstractFilter.cpp */; };
-		A2DFD9B6195AD83900552CA6 /* AbstractTwoPassFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DFD989195AD83900552CA6 /* AbstractTwoPassFilter.cpp */; };
 		A2DFD9B7195AD83900552CA6 /* BilateralFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DFD98B195AD83900552CA6 /* BilateralFilter.cpp */; };
 		A2DFD9B8195AD83900552CA6 /* CGAColorspaceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DFD98D195AD83900552CA6 /* CGAColorspaceFilter.cpp */; };
 		A2DFD9B9195AD83900552CA6 /* EmbossFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DFD98F195AD83900552CA6 /* EmbossFilter.cpp */; };
@@ -77,10 +84,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A24F19F5195D26D700BD1011 /* ColorPackingFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorPackingFilter.cpp; sourceTree = "<group>"; };
+		A24F19F6195D26D700BD1011 /* ColorPackingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPackingFilter.h; sourceTree = "<group>"; };
+		A24F19F8195D340D00BD1011 /* AbstractPingPongRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractPingPongRenderer.cpp; sourceTree = "<group>"; };
+		A24F19F9195D340D00BD1011 /* AbstractPingPongRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractPingPongRenderer.h; sourceTree = "<group>"; };
+		A24F19FB195D36E400BD1011 /* Abstract3x3PingPongFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Abstract3x3PingPongFilter.cpp; sourceTree = "<group>"; };
+		A24F19FC195D36E400BD1011 /* Abstract3x3PingPongFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract3x3PingPongFilter.h; sourceTree = "<group>"; };
+		A276AC14195D0517007AB1C2 /* Parameter2fv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parameter2fv.h; sourceTree = "<group>"; };
+		A276AC15195D0524007AB1C2 /* Parameter3fv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parameter3fv.h; sourceTree = "<group>"; };
+		A276AC16195D0739007AB1C2 /* AbstractParameterV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractParameterV.h; sourceTree = "<group>"; };
+		A2A9C117195D0F17002D2BDD /* XYDerivativeFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XYDerivativeFilter.cpp; sourceTree = "<group>"; };
+		A2A9C118195D0F17002D2BDD /* XYDerivativeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYDerivativeFilter.h; sourceTree = "<group>"; };
+		A2A9C11A195D11E3002D2BDD /* ThresholdedNonMaximumSuppressionFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThresholdedNonMaximumSuppressionFilter.cpp; sourceTree = "<group>"; };
+		A2A9C11B195D11E3002D2BDD /* ThresholdedNonMaximumSuppressionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThresholdedNonMaximumSuppressionFilter.h; sourceTree = "<group>"; };
+		A2A9C11D195D1624002D2BDD /* Abstract3x3TextureSamplingFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Abstract3x3TextureSamplingFilter.cpp; sourceTree = "<group>"; };
+		A2A9C11E195D1624002D2BDD /* Abstract3x3TextureSamplingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract3x3TextureSamplingFilter.h; sourceTree = "<group>"; };
+		A2A9C120195D1AA8002D2BDD /* HarrisCornerDetectionFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HarrisCornerDetectionFilter.cpp; sourceTree = "<group>"; };
+		A2A9C121195D1AA8002D2BDD /* HarrisCornerDetectionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HarrisCornerDetectionFilter.h; sourceTree = "<group>"; };
+		A2A9C123195D1CA8002D2BDD /* GrayscaleFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrayscaleFilter.cpp; sourceTree = "<group>"; };
+		A2A9C124195D1CA8002D2BDD /* GrayscaleFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrayscaleFilter.h; sourceTree = "<group>"; };
 		A2DFD987195AD83900552CA6 /* AbstractFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractFilter.cpp; sourceTree = "<group>"; };
 		A2DFD988195AD83900552CA6 /* AbstractFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractFilter.h; sourceTree = "<group>"; };
-		A2DFD989195AD83900552CA6 /* AbstractTwoPassFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractTwoPassFilter.cpp; sourceTree = "<group>"; };
-		A2DFD98A195AD83900552CA6 /* AbstractTwoPassFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTwoPassFilter.h; sourceTree = "<group>"; };
 		A2DFD98B195AD83900552CA6 /* BilateralFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BilateralFilter.cpp; sourceTree = "<group>"; };
 		A2DFD98C195AD83900552CA6 /* BilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BilateralFilter.h; sourceTree = "<group>"; };
 		A2DFD98D195AD83900552CA6 /* CGAColorspaceFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CGAColorspaceFilter.cpp; sourceTree = "<group>"; };
@@ -197,8 +221,12 @@
 			children = (
 				A2DFD987195AD83900552CA6 /* AbstractFilter.cpp */,
 				A2DFD988195AD83900552CA6 /* AbstractFilter.h */,
-				A2DFD989195AD83900552CA6 /* AbstractTwoPassFilter.cpp */,
-				A2DFD98A195AD83900552CA6 /* AbstractTwoPassFilter.h */,
+				A2A9C11D195D1624002D2BDD /* Abstract3x3TextureSamplingFilter.cpp */,
+				A2A9C11E195D1624002D2BDD /* Abstract3x3TextureSamplingFilter.h */,
+				A24F19F8195D340D00BD1011 /* AbstractPingPongRenderer.cpp */,
+				A24F19F9195D340D00BD1011 /* AbstractPingPongRenderer.h */,
+				A24F19FB195D36E400BD1011 /* Abstract3x3PingPongFilter.cpp */,
+				A24F19FC195D36E400BD1011 /* Abstract3x3PingPongFilter.h */,
 				A2DFD98B195AD83900552CA6 /* BilateralFilter.cpp */,
 				A2DFD98C195AD83900552CA6 /* BilateralFilter.h */,
 				A2DFD98D195AD83900552CA6 /* CGAColorspaceFilter.cpp */,
@@ -229,6 +257,16 @@
 				A2DFD9A6195AD83900552CA6 /* VoronoiFilter.h */,
 				A2DFD9A7195AD83900552CA6 /* ZoomBlurFilter.cpp */,
 				A2DFD9A8195AD83900552CA6 /* ZoomBlurFilter.h */,
+				A2A9C117195D0F17002D2BDD /* XYDerivativeFilter.cpp */,
+				A2A9C118195D0F17002D2BDD /* XYDerivativeFilter.h */,
+				A2A9C11A195D11E3002D2BDD /* ThresholdedNonMaximumSuppressionFilter.cpp */,
+				A2A9C11B195D11E3002D2BDD /* ThresholdedNonMaximumSuppressionFilter.h */,
+				A2A9C120195D1AA8002D2BDD /* HarrisCornerDetectionFilter.cpp */,
+				A2A9C121195D1AA8002D2BDD /* HarrisCornerDetectionFilter.h */,
+				A2A9C123195D1CA8002D2BDD /* GrayscaleFilter.cpp */,
+				A2A9C124195D1CA8002D2BDD /* GrayscaleFilter.h */,
+				A24F19F5195D26D700BD1011 /* ColorPackingFilter.cpp */,
+				A24F19F6195D26D700BD1011 /* ColorPackingFilter.h */,
 			);
 			name = filters;
 			path = ../src/filters;
@@ -238,8 +276,11 @@
 			isa = PBXGroup;
 			children = (
 				A2DFD9AB195AD83900552CA6 /* AbstractParameter.h */,
+				A276AC16195D0739007AB1C2 /* AbstractParameterV.h */,
 				A2DFD9AC195AD83900552CA6 /* Parameter2f.h */,
+				A276AC14195D0517007AB1C2 /* Parameter2fv.h */,
 				A2DFD9AD195AD83900552CA6 /* Parameter3f.h */,
+				A276AC15195D0524007AB1C2 /* Parameter3fv.h */,
 				A2DFD9AE195AD83900552CA6 /* Parameter4f.h */,
 				A2DFD9AF195AD83900552CA6 /* ParameterF.h */,
 				A2DFD9B0195AD83900552CA6 /* ParameterI.h */,
@@ -427,20 +468,27 @@
 			files = (
 				A2DFD9B7195AD83900552CA6 /* BilateralFilter.cpp in Sources */,
 				A2DFD9C3195AD83900552CA6 /* VignetteFilter.cpp in Sources */,
+				A2A9C11F195D1624002D2BDD /* Abstract3x3TextureSamplingFilter.cpp in Sources */,
 				A2DFD9C4195AD83900552CA6 /* VoronoiFilter.cpp in Sources */,
 				A2DFD9B5195AD83900552CA6 /* AbstractFilter.cpp in Sources */,
-				A2DFD9B6195AD83900552CA6 /* AbstractTwoPassFilter.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				A2A9C122195D1AA8002D2BDD /* HarrisCornerDetectionFilter.cpp in Sources */,
+				A24F19FD195D36E400BD1011 /* Abstract3x3PingPongFilter.cpp in Sources */,
 				A2DFD9C0195AD83900552CA6 /* SobelEdgeDetectionFilter.cpp in Sources */,
+				A24F19FA195D340D00BD1011 /* AbstractPingPongRenderer.cpp in Sources */,
 				A2DFD9C2195AD83900552CA6 /* ToonFilter.cpp in Sources */,
 				A2DFD9C5195AD83900552CA6 /* ZoomBlurFilter.cpp in Sources */,
 				A2DFD9B8195AD83900552CA6 /* CGAColorspaceFilter.cpp in Sources */,
+				A2A9C125195D1CA8002D2BDD /* GrayscaleFilter.cpp in Sources */,
 				A2DFD9BF195AD83900552CA6 /* PixelateFilter.cpp in Sources */,
 				A2DFD9B9195AD83900552CA6 /* EmbossFilter.cpp in Sources */,
 				A2DFD9C6195AD83900552CA6 /* ParametricObject.cpp in Sources */,
+				A2A9C119195D0F17002D2BDD /* XYDerivativeFilter.cpp in Sources */,
 				A2DFD9C1195AD83900552CA6 /* TiltShiftFilter.cpp in Sources */,
 				A2DFD9BD195AD83900552CA6 /* LookupFilter.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				A2A9C11C195D11E3002D2BDD /* ThresholdedNonMaximumSuppressionFilter.cpp in Sources */,
+				A24F19F7195D26D700BD1011 /* ColorPackingFilter.cpp in Sources */,
 				A2DFD9BC195AD83900552CA6 /* KuwaharaFilter.cpp in Sources */,
 				A2DFD9BE195AD83900552CA6 /* PerlinPixellationFilter.cpp in Sources */,
 				A2DFD9BB195AD83900552CA6 /* GaussianBlurFilter.cpp in Sources */,
