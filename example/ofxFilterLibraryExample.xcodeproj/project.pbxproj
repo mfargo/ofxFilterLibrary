@@ -10,6 +10,7 @@
 		A24F19F7195D26D700BD1011 /* ColorPackingFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F19F5195D26D700BD1011 /* ColorPackingFilter.cpp */; };
 		A24F19FA195D340D00BD1011 /* AbstractPingPongRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F19F8195D340D00BD1011 /* AbstractPingPongRenderer.cpp */; };
 		A24F19FD195D36E400BD1011 /* Abstract3x3PingPongFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F19FB195D36E400BD1011 /* Abstract3x3PingPongFilter.cpp */; };
+		A25911AD195D63BF006883A7 /* FilterChain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A25911AB195D63BF006883A7 /* FilterChain.cpp */; };
 		A2A9C119195D0F17002D2BDD /* XYDerivativeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A9C117195D0F17002D2BDD /* XYDerivativeFilter.cpp */; };
 		A2A9C11C195D11E3002D2BDD /* ThresholdedNonMaximumSuppressionFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A9C11A195D11E3002D2BDD /* ThresholdedNonMaximumSuppressionFilter.cpp */; };
 		A2A9C11F195D1624002D2BDD /* Abstract3x3TextureSamplingFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A9C11D195D1624002D2BDD /* Abstract3x3TextureSamplingFilter.cpp */; };
@@ -32,6 +33,7 @@
 		A2DFD9C4195AD83900552CA6 /* VoronoiFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DFD9A5195AD83900552CA6 /* VoronoiFilter.cpp */; };
 		A2DFD9C5195AD83900552CA6 /* ZoomBlurFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DFD9A7195AD83900552CA6 /* ZoomBlurFilter.cpp */; };
 		A2DFD9C6195AD83900552CA6 /* ParametricObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2DFD9B3195AD83900552CA6 /* ParametricObject.cpp */; };
+		A2E1BB37195D6E23003AE26C /* CornerDetectionFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2E1BB35195D6E23003AE26C /* CornerDetectionFilter.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -90,6 +92,8 @@
 		A24F19F9195D340D00BD1011 /* AbstractPingPongRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractPingPongRenderer.h; sourceTree = "<group>"; };
 		A24F19FB195D36E400BD1011 /* Abstract3x3PingPongFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Abstract3x3PingPongFilter.cpp; sourceTree = "<group>"; };
 		A24F19FC195D36E400BD1011 /* Abstract3x3PingPongFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract3x3PingPongFilter.h; sourceTree = "<group>"; };
+		A25911AB195D63BF006883A7 /* FilterChain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FilterChain.cpp; sourceTree = "<group>"; };
+		A25911AC195D63BF006883A7 /* FilterChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterChain.h; sourceTree = "<group>"; };
 		A276AC14195D0517007AB1C2 /* Parameter2fv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parameter2fv.h; sourceTree = "<group>"; };
 		A276AC15195D0524007AB1C2 /* Parameter3fv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parameter3fv.h; sourceTree = "<group>"; };
 		A276AC16195D0739007AB1C2 /* AbstractParameterV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractParameterV.h; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 		A2DFD9B2195AD83900552CA6 /* ParameterT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterT.h; sourceTree = "<group>"; };
 		A2DFD9B3195AD83900552CA6 /* ParametricObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParametricObject.cpp; sourceTree = "<group>"; };
 		A2DFD9B4195AD83900552CA6 /* ParametricObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametricObject.h; sourceTree = "<group>"; };
+		A2E1BB35195D6E23003AE26C /* CornerDetectionFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CornerDetectionFilter.cpp; sourceTree = "<group>"; };
+		A2E1BB36195D6E23003AE26C /* CornerDetectionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CornerDetectionFilter.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -231,6 +237,8 @@
 				A2DFD98C195AD83900552CA6 /* BilateralFilter.h */,
 				A2DFD98D195AD83900552CA6 /* CGAColorspaceFilter.cpp */,
 				A2DFD98E195AD83900552CA6 /* CGAColorspaceFilter.h */,
+				A2E1BB35195D6E23003AE26C /* CornerDetectionFilter.cpp */,
+				A2E1BB36195D6E23003AE26C /* CornerDetectionFilter.h */,
 				A2DFD98F195AD83900552CA6 /* EmbossFilter.cpp */,
 				A2DFD990195AD83900552CA6 /* EmbossFilter.h */,
 				A2DFD991195AD83900552CA6 /* ErosionFilter.cpp */,
@@ -267,6 +275,8 @@
 				A2A9C124195D1CA8002D2BDD /* GrayscaleFilter.h */,
 				A24F19F5195D26D700BD1011 /* ColorPackingFilter.cpp */,
 				A24F19F6195D26D700BD1011 /* ColorPackingFilter.h */,
+				A25911AB195D63BF006883A7 /* FilterChain.cpp */,
+				A25911AC195D63BF006883A7 /* FilterChain.h */,
 			);
 			name = filters;
 			path = ../src/filters;
@@ -479,7 +489,9 @@
 				A2DFD9C2195AD83900552CA6 /* ToonFilter.cpp in Sources */,
 				A2DFD9C5195AD83900552CA6 /* ZoomBlurFilter.cpp in Sources */,
 				A2DFD9B8195AD83900552CA6 /* CGAColorspaceFilter.cpp in Sources */,
+				A25911AD195D63BF006883A7 /* FilterChain.cpp in Sources */,
 				A2A9C125195D1CA8002D2BDD /* GrayscaleFilter.cpp in Sources */,
+				A2E1BB37195D6E23003AE26C /* CornerDetectionFilter.cpp in Sources */,
 				A2DFD9BF195AD83900552CA6 /* PixelateFilter.cpp in Sources */,
 				A2DFD9B9195AD83900552CA6 /* EmbossFilter.cpp in Sources */,
 				A2DFD9C6195AD83900552CA6 /* ParametricObject.cpp in Sources */,
