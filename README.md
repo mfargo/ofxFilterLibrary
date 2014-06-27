@@ -3,6 +3,8 @@
 
 This is an addon for openFrameworks (http://openframeworks.cc) based on the shaders available in Brad Larson's iOS GPUImage library (https://github.com/BradLarson/GPUImage). I've structured things quite differently, but the majority of the shaders are about the same.
 
+There's a Kuwahara Filter for the kids, Perlin Pixelization for the grownups, and a creepy Bilateral filter for the self-conscious teen in all of us. You might also enjoy the stained glass-looking Voronoi implementation, the retro CGA Color Space filter, or the utilitarian Harris Corner Detection.
+
 Here's a few of the filters in action:
 
 <img src="http://omegra.net/img/f01.jpg" />
