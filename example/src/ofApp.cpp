@@ -5,9 +5,11 @@ void ofApp::setup(){
     _video.initGrabber(640, 480);
     _currentFilter = 0;
 
-    _filters.push_back(new XYDerivativeFilter(_video.getWidth(), _video.getHeight()));
+        // here's how you add individual filters
+    
     _filters.push_back(new KuwaharaFilter());
     _filters.push_back(new PerlinPixellationFilter(_video.getWidth(), _video.getHeight()));
+    _filters.push_back(new XYDerivativeFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new ZoomBlurFilter());
     _filters.push_back(new EmbossFilter(_video.getWidth(), _video.getHeight(), 2.f));
     _filters.push_back(new BilateralFilter(_video.getWidth(), _video.getHeight()));
@@ -24,6 +26,24 @@ void ofApp::setup(){
     _filters.push_back(new PixelateFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new HarrisCornerDetectionFilter(_video.getTextureReference()));
 
+        // and here's how you might daisy-chain a bunch of filters
+    
+    FilterChain * foggyTexturedGlassChain = new FilterChain(_video.getWidth(), _video.getHeight(), "Weird Glass");
+    foggyTexturedGlassChain->addFilter(new PerlinPixellationFilter(_video.getWidth(), _video.getHeight(), 13.f));
+    foggyTexturedGlassChain->addFilter(new EmbossFilter(_video.getWidth(), _video.getHeight(), 0.5));
+    foggyTexturedGlassChain->addFilter(new GaussianBlurFilter(_video.getWidth(), _video.getHeight(), 3.f));
+    _filters.push_back(foggyTexturedGlassChain);
+    
+        // here's another unimaginative filter chain
+    
+    FilterChain * watercolorChain = new FilterChain(_video.getWidth(), _video.getHeight(), "Monet");
+    watercolorChain->addFilter(new KuwaharaFilter(9));
+    watercolorChain->addFilter(new LookupFilter(_video.getWidth(), _video.getHeight(), "img/lookup_miss_etikate.png"));
+    watercolorChain->addFilter(new BilateralFilter(_video.getWidth(), _video.getHeight()));
+    watercolorChain->addFilter(new VignetteFilter());
+    _filters.push_back(watercolorChain);
+    
+    
 }
 
 void ofApp::update(){
@@ -39,7 +59,7 @@ void ofApp::draw(){
     _filters[_currentFilter]->end();
     ofPopMatrix();
     ofSetColor(255);
-    //ofDrawBitmapString( _filters[_currentFilter]->getName() + " Filter\n"+ _filters[_currentFilter]->getInstructions(), ofPoint(40, 20));
+    ofDrawBitmapString( _filters[_currentFilter]->getName() + " Filter\n"+ _filters[_currentFilter]->getInstructions(), ofPoint(40, 20));
 }
 
 void ofApp::keyPressed(int key){
