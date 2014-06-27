@@ -5,13 +5,13 @@ This is an addon for openFrameworks (http://openframeworks.cc) based on the shad
 
 Here's a few of the filters in action:
 
-<img src="https://omegra.net/img/f01.jpg" />
-<img src="https://omegra.net/img/f02.jpg" />
-<img src="https://omegra.net/img/f03.jpg" />
-<img src="https://omegra.net/img/f04.jpg" />
-<img src="https://omegra.net/img/f05.jpg" />
-<img src="https://omegra.net/img/f06.jpg" />
-<img src="https://omegra.net/img/f07.jpg" />
+<img src="http://omegra.net/img/f01.jpg" />
+<img src="http://omegra.net/img/f02.jpg" />
+<img src="http://omegra.net/img/f03.jpg" />
+<img src="http://omegra.net/img/f04.jpg" />
+<img src="http://omegra.net/img/f05.jpg" />
+<img src="http://omegra.net/img/f06.jpg" />
+<img src="http://omegra.net/img/f07.jpg" />
 
 ## Dependencies ##
 
