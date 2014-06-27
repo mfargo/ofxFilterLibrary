@@ -10,30 +10,21 @@
 #define __ofxFilterLibraryExample__HarrisCornerDetectionFilter__
 
 #include "ThresholdedNonMaximumSuppressionFilter.h"
+#include "CornerDetectionFilter.h"
 #include "GaussianBlurFilter.h"
 #include "GrayscaleFilter.h"
 #include "XYDerivativeFilter.h"
 #include "ColorPackingFilter.h"
+#include "FilterChain.h"
 
-class HarrisCornerDetectionFilter : public AbstractFilter, public AbstractPingPongRenderer {
+class HarrisCornerDetectionFilter : public FilterChain {
 public:
 	HarrisCornerDetectionFilter(ofTexture & texture, float sensitivity=0.1f, float threshold=0.2, float blur=2.f);
 	virtual ~HarrisCornerDetectionFilter();
 
-    virtual void    begin();
     virtual void    end();
 
-
-protected:
-    virtual string  _getFragSrc();
-
-    float           _threshold, _blur, _sensitivity;
-    
 private:
-    ThresholdedNonMaximumSuppressionFilter *    _suppresionFilter;
-    GaussianBlurFilter *                        _blurFilter;
-    XYDerivativeFilter *                        _derivativeFilter;
-    ColorPackingFilter *                        _colorPackingFilter;
     
     ofPixels                                    _filteredPixels;
     ofTexture                                   _texture;

@@ -36,7 +36,7 @@ string AbstractFilter::_getFragSrc() {
         
         void main() {
             vec2 uv = gl_TexCoord[0].xy;
-            gl_FragColor = vec4(0.8, 0.85, 0.1, 1.0); //texture2D(inputImageTexture, uv );
+            gl_FragColor = texture2D(inputImageTexture, uv );
         }
     );
 }

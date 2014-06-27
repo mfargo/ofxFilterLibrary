@@ -28,6 +28,7 @@ public:
     virtual void    setWidth(float width) { _width = width; }
     virtual void    setHeight(float height) { _height = height; }
     virtual string  getInstructions() { return ""; }
+    ofShader &      getShader() { return _shader; }
     
 protected:
     virtual void    _setupShader();
