@@ -5,8 +5,6 @@ void ofApp::setup(){
     _video.initGrabber(640, 480);
     _currentFilter = 0;
 
-    _filters.push_back(new GaussianBlurFilter(_video.getWidth(), _video.getHeight()));
-    _filters.push_back(new HarrisCornerDetectionFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new XYDerivativeFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new KuwaharaFilter());
     _filters.push_back(new PerlinPixellationFilter(_video.getWidth(), _video.getHeight()));
@@ -24,6 +22,7 @@ void ofApp::setup(){
     _filters.push_back(new VignetteFilter());
     _filters.push_back(new ToonFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new PixelateFilter(_video.getWidth(), _video.getHeight()));
+    _filters.push_back(new HarrisCornerDetectionFilter(_video.getTextureReference()));
 
 }
 
