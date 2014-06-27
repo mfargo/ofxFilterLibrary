@@ -22,9 +22,10 @@ public:
     }
     
 protected:
+    virtual string  _getVertSrc();
+    virtual string  _getFragSrc();
     float           _threshold;
     float           _quantizationLevels;
-    virtual void    _setup();
 };
 
 #endif /* defined(__filterSandbox__ToonFilter__) */

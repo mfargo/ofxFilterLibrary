@@ -9,14 +9,19 @@
 #ifndef __ofxFilterLibraryExample__ThresholdedNonMaximumSuppressionFilter__
 #define __ofxFilterLibraryExample__ThresholdedNonMaximumSuppressionFilter__
 
-#include "ofMain.h"
+#include "Abstract3x3TextureSamplingFilter.h"
 
-class ThresholdedNonMaximumSuppressionFilter {
+class ThresholdedNonMaximumSuppressionFilter : public Abstract3x3TextureSamplingFilter {
 public:
-	ThresholdedNonMaximumSuppressionFilter();
+	ThresholdedNonMaximumSuppressionFilter(float width, float height, bool usesPackedColorSpace=false, float texelSpacing=1.f);
 	virtual ~ThresholdedNonMaximumSuppressionFilter();
 
+protected:
+    virtual string  _getFragSrc();
+    
 private:
+    bool        _usesPackedColorSpace;
+    
 };
 
 #endif /* defined(__ofxFilterLibraryExample__ThresholdedNonMaximumSuppressionFilter__) */

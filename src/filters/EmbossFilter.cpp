@@ -10,11 +10,11 @@
 
 EmbossFilter::EmbossFilter(float width, float height, float intensity) : AbstractFilter(width, height) {
     _name = "Emboss";
-    _setup();
     _addParameter(new ParameterMatrix4f("convolutionMatrix", _matrix));
     _addParameter(new ParameterF("texelWidth", 1.f/getWidth()));
     _addParameter(new ParameterF("texelHeight", 1.f/getHeight()));
     setIntensity(intensity);
+    _setupShader();
 }
 EmbossFilter::~EmbossFilter() {}
 
@@ -25,8 +25,8 @@ void EmbossFilter::onKeyPressed(int key) {
     setIntensity(_intensity);
 }
 
-void EmbossFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string EmbossFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
         
         uniform mat4 convolutionMatrix;
@@ -62,7 +62,10 @@ void EmbossFilter::_setup() {
             gl_FragColor = vec4(resultColor, centerColor.a);
         }
     );
-    string vertSrc = GLSL_STRING(120,
+}
+
+string EmbossFilter::_getVertSrc() {
+    return GLSL_STRING(120,
         uniform float texelWidth;
         uniform float texelHeight;
 
@@ -101,9 +104,6 @@ void EmbossFilter::_setup() {
             bottomRightTextureCoordinate = textureCoordinate + widthHeightStep;
         }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, vertSrc);
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();
 }
 
 void EmbossFilter::setIntensity(float intensity) {

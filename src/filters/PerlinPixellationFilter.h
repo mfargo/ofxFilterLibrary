@@ -22,8 +22,8 @@ public:
     }
     
 protected:
+    virtual string  _getFragSrc();
     float           _scale;
-    virtual void    _setup();
 };
 
 #endif /* defined(__filterSandbox__PerlinPixellationFilter__) */

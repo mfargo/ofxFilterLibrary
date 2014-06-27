@@ -14,6 +14,13 @@ AbstractFilter::AbstractFilter(float width, float height) {
 }
 AbstractFilter::~AbstractFilter() {}
 
+void AbstractFilter::_setupShader() {
+    if (_shader.isLoaded()) _shader.unload();
+    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getVertSrc());
+    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, _getFragSrc());
+    _shader.linkProgram();
+}
+
 void AbstractFilter::begin() {
     _shader.begin();
     _updateParameters(&_shader);
@@ -23,9 +30,18 @@ void AbstractFilter::end() {
     _shader.end();
 }
 
-#pragma utility functions
+string AbstractFilter::_getFragSrc() {
+    return GLSL_STRING(120,
+        uniform sampler2D inputImageTexture;
+        
+        void main() {
+            vec2 uv = gl_TexCoord[0].xy;
+            gl_FragColor = vec4(0.8, 0.85, 0.1, 1.0); //texture2D(inputImageTexture, uv );
+        }
+    );
+}
 
-string AbstractFilter::_getPassthroughVertexShader() {
+string AbstractFilter::_getVertSrc() {
     return GLSL_STRING(120,
        void main() {
            gl_TexCoord[0] = gl_MultiTexCoord0;

@@ -9,23 +9,22 @@
 #include "TiltShiftFilter.h"
 
 
-TiltShiftFilter::TiltShiftFilter(ofTexture & texture, float topFocus, float bottomFocus, float falloff) : AbstractFilter(texture.getWidth(), texture.getHeight()) {
+TiltShiftFilter::TiltShiftFilter(ofTexture & texture, float focusPercent, float falloff) : AbstractFilter(texture.getWidth(), texture.getHeight()) {
     _name = "Tilt Shift";
     _texture = texture;
-    _setup();
+    _focusPercent=ofClamp(focusPercent, 0, 1);
     _gaussianBlurFilter = new GaussianBlurFilter(getWidth(), getHeight());
-    _addParameter(new ParameterF("topFocusLevel", topFocus));
-    _addParameter(new ParameterF("bottomFocusLevel", bottomFocus));
+    _addParameter(new ParameterF("topFocusLevel", focusPercent));
+    _addParameter(new ParameterF("bottomFocusLevel", 1.f - focusPercent));
     _addParameter(new ParameterF("focusFallOffRate", falloff));
     _addParameter(new ParameterT("inputImageTexture", _texture, 1));
     _addParameter(new ParameterT("inputImageTexture2", _gaussianBlurFilter->getTextureReference(), 2));
+    _setupShader();
 }
 TiltShiftFilter::~TiltShiftFilter() {}
 
-void TiltShiftFilter::_setup() {
-    if (getWidth()<=0 || getHeight() <= 0) return;
-    
-    string fragSource = GLSL_STRING(120,
+string TiltShiftFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
         uniform sampler2D inputImageTexture2;
 
@@ -44,27 +43,15 @@ void TiltShiftFilter::_setup() {
             gl_FragColor = mix(sharpImageColor, blurredImageColor, blurIntensity);
         }
     );
-    
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getPassthroughVertexShader());
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSource);
-    _shader.linkProgram();
 }
 
 void TiltShiftFilter::onKeyPressed(int key) {
-    if (key=='>' || key=='.') {
-        float focusFallOffRate = ((ParameterF *)getParameter("focusFallOffRate"))->getValue();
-        focusFallOffRate += 0.05f;
-        if (focusFallOffRate>1.f) focusFallOffRate = 1.f;
-        updateParameter("focusFallOffRate", focusFallOffRate);
-    }
-    else if (key=='<' || key==',') {
-        float focusFallOffRate = ((ParameterF *)getParameter("focusFallOffRate"))->getValue();
-        focusFallOffRate -= 0.05f;
-        if (focusFallOffRate<0) focusFallOffRate = 0;
-        updateParameter("focusFallOffRate", focusFallOffRate);
-
-    }
-    else _gaussianBlurFilter->onKeyPressed(key);
+    if (key==OF_KEY_UP)
+        _focusPercent = ofClamp(_focusPercent-0.01, 0, 1);
+    else if (key==OF_KEY_DOWN)
+        _focusPercent = ofClamp(_focusPercent+0.01, 0, 1);
+    updateParameter("topFocusLevel", _focusPercent);
+    updateParameter("bottomFocusLevel", 1.f - _focusPercent);
 }
 
 void TiltShiftFilter::begin() {

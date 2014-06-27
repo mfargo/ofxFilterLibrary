@@ -10,9 +10,9 @@
 
 KuwaharaFilter::KuwaharaFilter(int radius) : AbstractFilter(0, 0) {
     _name = "Kuwahara";
-    _setup();
     _radius = radius;
     _addParameter(new ParameterI("radius", _radius));
+    _setupShader();
 }
 KuwaharaFilter::~KuwaharaFilter() {}
 
@@ -23,8 +23,8 @@ void KuwaharaFilter::onKeyPressed(int key) {
     updateParameter("radius", _radius);
 }
 
-void KuwaharaFilter::_setup() {
-    string fragSource = GLSL_STRING(120,
+string KuwaharaFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
         uniform int radius;
 
@@ -109,7 +109,4 @@ void KuwaharaFilter::_setup() {
             }
         }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getPassthroughVertexShader());
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSource);
-    _shader.linkProgram();
 }

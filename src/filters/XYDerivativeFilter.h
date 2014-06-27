@@ -9,14 +9,16 @@
 #ifndef __ofxFilterLibraryExample__XYDerivativeFilter__
 #define __ofxFilterLibraryExample__XYDerivativeFilter__
 
-#include "ofMain.h"
+#include "SobelEdgeDetectionFilter.h"
 
-class XYDerivativeFilter {
+class XYDerivativeFilter : public SobelEdgeDetectionFilter {
 public:
-	XYDerivativeFilter();
+	XYDerivativeFilter(float width, float height, float edgeStrength=1.f);
 	virtual ~XYDerivativeFilter();
 
-private:
+    
+protected:
+    virtual string  _getFragSrc();
 };
 
 #endif /* defined(__ofxFilterLibraryExample__XYDerivativeFilter__) */

@@ -11,9 +11,9 @@
 PixelateFilter::PixelateFilter(float width, float height, float pixelRatio) : AbstractFilter(width, height) {
     _name = "Pixelate";
     _pixelRatio = pixelRatio;
-    _setup();
     _addParameter(new ParameterF("fractionalWidthOfPixel", pixelRatio));
     _addParameter(new ParameterF("aspectRatio", getHeight()/getWidth() ));
+    _setupShader();
 }
 PixelateFilter::~PixelateFilter() {}
 
@@ -25,8 +25,8 @@ void PixelateFilter::onKeyPressed(int key) {
     updateParameter("fractionalWidthOfPixel", _pixelRatio);
 }
 
-void PixelateFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string PixelateFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
         uniform float fractionalWidthOfPixel;
         uniform float aspectRatio;
@@ -38,7 +38,4 @@ void PixelateFilter::_setup() {
             gl_FragColor = texture2D(inputImageTexture, samplePos);
         }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getPassthroughVertexShader());
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();    
 }

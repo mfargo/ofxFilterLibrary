@@ -17,7 +17,7 @@ public:
 	virtual ~CGAColorspaceFilter();
 
 protected:
-    virtual void    _setup();
+    virtual string  _getFragSrc();
 
 };
 

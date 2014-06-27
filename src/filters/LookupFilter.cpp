@@ -10,14 +10,14 @@
 
 LookupFilter::LookupFilter(float width, float height, string lookupImageUrl) : AbstractFilter(width, height) {
     _name = "Lookup";
-    _setup();
     ofLoadImage(_lookupTexture, lookupImageUrl);
     _addParameter(new ParameterT("inputImageTexture2", _lookupTexture, 2));
-
+    _setupShader();
 }
+LookupFilter::~LookupFilter() {}
 
-void LookupFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string LookupFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
         uniform sampler2D inputImageTexture2; // lookup texture
 
@@ -50,10 +50,6 @@ void LookupFilter::_setup() {
             gl_FragColor = vec4(newColor.rgb, textureColor.w);
         }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getPassthroughVertexShader());
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();
 }
-LookupFilter::~LookupFilter() {}
 
 

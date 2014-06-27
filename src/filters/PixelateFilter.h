@@ -21,8 +21,8 @@ public:
 
     
 protected:
+    virtual string  _getFragSrc();
     float           _pixelRatio;
-    virtual void    _setup();
 };
 
 #endif /* defined(__filterSandbox__PixelateFilter__) */

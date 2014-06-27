@@ -9,9 +9,9 @@
 #ifndef __filterSandbox__BilateralFilter__
 #define __filterSandbox__BilateralFilter__
 
-#include "AbstractTwoPassFilter.h"
+#include "Abstract3x3PingPongFilter.h"
 
-class BilateralFilter : public AbstractTwoPassFilter {
+class BilateralFilter : public Abstract3x3PingPongFilter {
 public:
 	BilateralFilter(float width, float height, float blurOffset=4.f, float normalization=6.f);
 	virtual ~BilateralFilter();
@@ -24,7 +24,9 @@ public:
     void            setBlurOffset(float blurOffset) { _texelSpacing = ofVec2f(blurOffset, blurOffset); }
     
 protected:
-    virtual void    _setup();
+    virtual string  _getFragSrc();
+    virtual string  _getVertSrc();
+    
     float           _normalization;
 
 };

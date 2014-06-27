@@ -13,10 +13,18 @@
 
 class AbstractPingPongRenderer {
 public:
-	AbstractPingPongRenderer();
+	AbstractPingPongRenderer(float width, float height);
 	virtual ~AbstractPingPongRenderer();
 
-private:
+    void            ping();
+    void            pong();
+    
+    ofTexture &     getTextureReference() { return _pong.getTextureReference(); }
+
+protected:
+    
+    ofFbo       _ping;
+    ofFbo       _pong;
 };
 
 #endif /* defined(__ofxFilterLibraryExample__AbstractPingPongRenderer__) */

@@ -20,8 +20,8 @@ public:
     virtual string  getInstructions() { return "Up and Down change radius ("+ofToString(_radius)+")"; }
     
 protected:
+    virtual string  _getFragSrc();
     int             _radius;
-    virtual void    _setup();
 };
 
 

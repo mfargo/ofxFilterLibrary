@@ -8,13 +8,14 @@
 
 #include "BilateralFilter.h"
 
-BilateralFilter::BilateralFilter(float width, float height, float blurOffset, float normalization) : AbstractTwoPassFilter(width, height, ofVec2f(blurOffset, blurOffset)) {
+BilateralFilter::BilateralFilter(float width, float height, float blurOffset, float normalization) : Abstract3x3PingPongFilter(width, height, ofVec2f(blurOffset, blurOffset)) {
     _name = "Bilateral";
     _normalization = normalization;
-    _setup();
     _addParameter(new ParameterF("distanceNormalizationFactor", normalization));
+    _setupShader();
 }
 BilateralFilter::~BilateralFilter() {}
+
 
 void BilateralFilter::onKeyPressed(int key) {
     float blurOffset = _texelSpacing.x;
@@ -28,8 +29,8 @@ void BilateralFilter::onKeyPressed(int key) {
     _texelSpacing = ofVec2f(blurOffset, blurOffset);
 }
 
-void BilateralFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string BilateralFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
         
         const int GAUSSIAN_SAMPLES = 9;
@@ -103,7 +104,9 @@ void BilateralFilter::_setup() {
             gl_FragColor = sum / gaussianWeightTotal;
         }
     );
-    string vertSrc = GLSL_STRING(120,
+}
+string BilateralFilter::_getVertSrc() {
+    return GLSL_STRING(120,
         const int GAUSSIAN_SAMPLES = 9;
         
         uniform float texelWidthOffset;
@@ -128,8 +131,5 @@ void BilateralFilter::_setup() {
             }
         }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, vertSrc);
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();
 }
 

@@ -21,8 +21,10 @@ public:
 
     
 protected:
+    virtual string  _getFragSrc();
+    virtual string  _getVertSrc();
+    
     float           _edgeStrength;
-    virtual void    _setup();
 };
 
 #endif /* defined(__filterSandbox__SobelEdgeDetectionFilter__) */

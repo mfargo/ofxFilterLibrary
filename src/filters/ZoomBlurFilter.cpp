@@ -10,9 +10,9 @@
 
 ZoomBlurFilter::ZoomBlurFilter(float blurSize) : AbstractFilter(0, 0) {
     _name = "Zoom Blur";
-    _setup();
     _addParameter(new Parameter2f("blurCenter", ofVec2f(0.5, 0.5)));
     _addParameter(new ParameterF("blurSize", blurSize ));
+    _setupShader();
 }
 ZoomBlurFilter::~ZoomBlurFilter() {}
 
@@ -23,8 +23,8 @@ void ZoomBlurFilter::onKeyPressed(int key) {
     updateParameter("blurSize", _blurSize);
 }
 
-void ZoomBlurFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string ZoomBlurFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
         
         uniform vec2 blurCenter;
@@ -48,9 +48,6 @@ void ZoomBlurFilter::_setup() {
             
         }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getPassthroughVertexShader());
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();
 }
 
 void ZoomBlurFilter::begin() {

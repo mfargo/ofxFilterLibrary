@@ -22,8 +22,8 @@ public:
     virtual string  getInstructions() { return "Use the mouse to center zoom.\nUp and Down change blur size: " + ofToString(_blurSize); }
 
 protected:
+    virtual string  _getFragSrc();
     float           _blurSize;
-    virtual void    _setup();
     
 };
 

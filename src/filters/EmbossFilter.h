@@ -24,7 +24,10 @@ public:
     virtual string  getInstructions() { return "Up and Down change intensity: " + ofToString(_intensity); }
 
 protected:
-    virtual void    _setup();
+    virtual string  _getFragSrc();
+    virtual string  _getVertSrc();
+
+    
     ofMatrix4x4     _matrix;
     float           _intensity;
 };

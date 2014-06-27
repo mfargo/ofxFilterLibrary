@@ -13,7 +13,7 @@
 
 class TiltShiftFilter : public AbstractFilter {
 public:
-	TiltShiftFilter(ofTexture & texture, float topFocus=0.4f, float bottomFocus=0.6f, float falloff=0.2f);
+	TiltShiftFilter(ofTexture & texture, float focusPercent = 0.4, float falloff=0.2f);
 	virtual ~TiltShiftFilter();
 
     virtual void    begin();
@@ -21,12 +21,13 @@ public:
 
     virtual void    describeParameters();
     GaussianBlurFilter *getGaussianBlurFilter() { return _gaussianBlurFilter; }
-    virtual string  getInstructions() { return _gaussianBlurFilter->getInstructions()+"\n< and > change focus falloff"; }
+    virtual string  getInstructions() { return "Up and Down change vertical focus"; }
 
 protected:
-    virtual void        _setup();
+    virtual string      _getFragSrc();
     
 private:
+    float               _focusPercent;
     
     GaussianBlurFilter *_gaussianBlurFilter;
     ofTexture           _texture;

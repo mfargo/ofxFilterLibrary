@@ -11,24 +11,23 @@
 
 #include "AbstractFilter.h"
 
-static const int NUM_POINTS = 128;
-
 class VoronoiFilter : public AbstractFilter {
 public:
-	VoronoiFilter(ofTexture & texture);
+	VoronoiFilter(ofTexture & texture, int numPasses=5);
 	virtual ~VoronoiFilter();
 
-
     virtual void    begin();
+    virtual void    end();
     
 protected:
-    virtual string  _getFragSrc();
+    virtual void    _setup();
     
-    ofTexture   _texture;
-    ofPixels    _pixels;
-
-    float       _vertices[NUM_POINTS*2];
-    float       _colors[NUM_POINTS*3];
+    int             _numPasses;
+    ofTexture       _texture;
+    ofPixels        _pixels;
+    ofFbo           _ping;
+    ofFbo           _pong;
+    ofMesh          _mesh;
 };
 
 #endif /* defined(__filterSandbox__VoronoiFilter__) */

@@ -9,14 +9,19 @@
 #ifndef __ofxFilterLibraryExample__ColorPackingFilter__
 #define __ofxFilterLibraryExample__ColorPackingFilter__
 
-#include "ofMain.h"
+#include "AbstractFilter.h"
 
-class ColorPackingFilter {
+class ColorPackingFilter : public AbstractFilter {
 public:
-	ColorPackingFilter();
+	ColorPackingFilter(float width, float height, ofVec2f texelSize);
 	virtual ~ColorPackingFilter();
 
-private:
+protected:
+    virtual string  _getVertSrc();
+    virtual string  _getFragSrc();
+    
+    ofVec2f         _texelSize;
+    
 };
 
 #endif /* defined(__ofxFilterLibraryExample__ColorPackingFilter__) */

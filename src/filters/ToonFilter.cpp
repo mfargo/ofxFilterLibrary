@@ -10,13 +10,13 @@
 
 ToonFilter::ToonFilter(float width, float height, float threshold, float quantizationLevels) : AbstractFilter(width, height) {
     _name = "Toon";
-    _setup();
     _threshold = threshold;
     _quantizationLevels = quantizationLevels;
     _addParameter(new ParameterF("texelWidth", 1.f/getWidth()));
     _addParameter(new ParameterF("texelHeight", 1.f/getHeight()));
     _addParameter(new ParameterF("threshold", _threshold));
     _addParameter(new ParameterF("quantizationLevels", _quantizationLevels));
+    _setupShader();
 }
 ToonFilter::~ToonFilter() {}
 
@@ -31,8 +31,8 @@ void ToonFilter::onKeyPressed(int key) {
     updateParameter("threshold", _threshold);
 }
 
-void ToonFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string ToonFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         varying vec2 leftTextureCoordinate;
         varying vec2 rightTextureCoordinate;
 
@@ -76,7 +76,9 @@ void ToonFilter::_setup() {
             gl_FragColor = vec4(posterizedImageColor * thresholdTest, textureColor.a);
         }
     );
-    string vertSrc = GLSL_STRING(120,
+}
+string ToonFilter::_getVertSrc() {
+    return GLSL_STRING(120,
         uniform float texelWidth;
         uniform float texelHeight;
 
@@ -114,7 +116,4 @@ void ToonFilter::_setup() {
             bottomRightTextureCoordinate = textureCoordinate + widthHeightStep;
         }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, vertSrc);
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();
 }

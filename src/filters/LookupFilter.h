@@ -19,7 +19,7 @@ public:
     
 protected:
     ofTexture       _lookupTexture;
-    virtual void    _setup();
+    virtual string  _getFragSrc();
 };
 
 #endif /* defined(__filterSandbox__LookupFilter__) */

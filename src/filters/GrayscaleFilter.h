@@ -9,14 +9,15 @@
 #ifndef __ofxFilterLibraryExample__GrayscaleFilter__
 #define __ofxFilterLibraryExample__GrayscaleFilter__
 
-#include "ofMain.h"
+#include "AbstractFilter.h"
 
-class GrayscaleFilter {
+class GrayscaleFilter : public AbstractFilter {
 public:
 	GrayscaleFilter();
 	virtual ~GrayscaleFilter();
 
 private:
+    virtual string  _getFragSrc();
 };
 
 #endif /* defined(__ofxFilterLibraryExample__GrayscaleFilter__) */

@@ -30,11 +30,10 @@ public:
     virtual string  getInstructions() { return ""; }
     
 protected:
-    
-    virtual void    _setup() {}  // abstract
+    virtual void    _setupShader();
+    virtual string  _getFragSrc();  // override these
+    virtual string  _getVertSrc();  // with yr shader src
 
-        // utility
-    string          _getPassthroughVertexShader();
     ofShader        _shader;
     
 private:

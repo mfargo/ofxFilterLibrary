@@ -9,9 +9,9 @@
 #ifndef __filterSandbox__GaussianBlurFilter__
 #define __filterSandbox__GaussianBlurFilter__
 
-#include "AbstractTwoPassFilter.h"
+#include "Abstract3x3PingPongFilter.h"
 
-class GaussianBlurFilter : public AbstractTwoPassFilter {
+class GaussianBlurFilter : public Abstract3x3PingPongFilter {
 public:
 	GaussianBlurFilter(float width, float height, float blurSize=7.f, float bloom=1.f);
 	virtual ~GaussianBlurFilter();
@@ -23,9 +23,10 @@ public:
 
     
 protected:
+    virtual string  _getVertSrc();
+    virtual string  _getFragSrc();
     float           _blurSize;
     float           _bloom;
-    virtual void    _setup();
 
 };
 

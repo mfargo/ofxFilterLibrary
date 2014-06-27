@@ -10,13 +10,13 @@
 
 CGAColorspaceFilter::CGAColorspaceFilter() : AbstractFilter(0, 0) {
     _name = "CGA Colorspace";
-    _setup();
+    _setupShader();
 }
 CGAColorspaceFilter::~CGAColorspaceFilter() {}
 
 
-void CGAColorspaceFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string CGAColorspaceFilter::_getFragSrc() {
+    return GLSL_STRING(120,
          uniform sampler2D inputImageTexture;
          
          void main() {
@@ -58,7 +58,4 @@ void CGAColorspaceFilter::_setup() {
              gl_FragColor = finalColor;
          }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getPassthroughVertexShader());
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();
 }

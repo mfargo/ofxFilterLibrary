@@ -8,16 +8,12 @@
 
 #include "ErosionFilter.h"
 
-ErosionFilter::ErosionFilter(float width, float height, int erosionRadius) : AbstractTwoPassFilter(width, height, ofVec2f(erosionRadius, erosionRadius)) {
-    _setup();
+ErosionFilter::ErosionFilter(float width, float height, int erosionRadius) : Abstract3x3PingPongFilter(width, height, ofVec2f(erosionRadius, erosionRadius)) {
+    _setupShader();
 }
 ErosionFilter::~ErosionFilter() {}
 
-void ErosionFilter::_setup() {
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getVertSrcForRadius(_texelSpacing.x));
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, _getFragSrcForRadius(_texelSpacing.x));
-    _shader.linkProgram();
-}
+
 
 void ErosionFilter::onKeyPressed(int key) {
     int erosion = getErosionRadius();
@@ -33,6 +29,13 @@ void ErosionFilter::setErosionRadius(int erosionRadius) {
     _texelSpacing.y = erosionRadius;
 }
 
+string ErosionFilter::_getFragSrc() {
+    return _getFragSrcForRadius(_texelSpacing.x);
+}
+
+string ErosionFilter::_getVertSrc() {
+    return _getVertSrcForRadius(_texelSpacing.x);
+}
 
 string ErosionFilter::_getVertSrcForRadius(int radius) {
     switch (radius) {

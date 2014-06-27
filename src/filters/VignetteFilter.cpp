@@ -10,18 +10,18 @@
 
 VignetteFilter::VignetteFilter() : AbstractFilter(0, 0) {
     _name = "Vignette";
-    _setup();
     _addParameter(new Parameter2f("vignetteCenter", ofVec2f(0.5, 0.5) ));
     _addParameter(new Parameter3f("vignetteColor", ofVec3f(0, 0, 0)));
     _addParameter(new ParameterF("vignetteStart", 0.3));
     _addParameter(new ParameterF("vignetteEnd", 0.75));
+    _setupShader();
 }
 VignetteFilter::~VignetteFilter() {}
 
 
 
-void VignetteFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string VignetteFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
 
         uniform vec2 vignetteCenter;
@@ -37,7 +37,4 @@ void VignetteFilter::_setup() {
             gl_FragColor = vec4(mix(sourceImageColor.rgb, vignetteColor, percent), sourceImageColor.a);
         }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getPassthroughVertexShader());
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();
 }

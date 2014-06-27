@@ -11,10 +11,10 @@
 SobelEdgeDetectionFilter::SobelEdgeDetectionFilter(float width, float height, float edgeStrength) : AbstractFilter(width, height) {
     _name = "Sobel Edge";
     _edgeStrength = edgeStrength;
-    _setup();
     _addParameter(new ParameterF("edgeStrength", 1.f));
     _addParameter(new ParameterF("texelWidth", 1.f/getWidth()));
     _addParameter(new ParameterF("texelHeight", 1.f/getHeight()));
+    _setupShader();
 }
 SobelEdgeDetectionFilter::~SobelEdgeDetectionFilter() {}
 
@@ -25,8 +25,8 @@ void SobelEdgeDetectionFilter::onKeyPressed(int key) {
     updateParameter("edgeStrength", _edgeStrength);
 }
 
-void SobelEdgeDetectionFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string SobelEdgeDetectionFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         varying vec2 textureCoordinate;
         varying vec2 leftTextureCoordinate;
         varying vec2 rightTextureCoordinate;
@@ -59,7 +59,10 @@ void SobelEdgeDetectionFilter::_setup() {
             gl_FragColor = vec4(vec3(mag), 1.0);
         }
     );
-    string vertSrc = GLSL_STRING(120,
+}
+
+string SobelEdgeDetectionFilter::_getVertSrc() {
+    return GLSL_STRING(120,
          uniform float texelWidth;
          uniform float texelHeight;
          
@@ -98,7 +101,4 @@ void SobelEdgeDetectionFilter::_setup() {
              bottomRightTextureCoordinate = textureCoordinate + widthHeightStep;
          }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, vertSrc);
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();
 }

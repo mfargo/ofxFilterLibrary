@@ -9,15 +9,16 @@
 #include "GaussianBlurFilter.h"
 
 
-GaussianBlurFilter::GaussianBlurFilter(float width, float height, float blurSize, float bloom) : AbstractTwoPassFilter(width, height, ofVec2f(1, 1)) {
+GaussianBlurFilter::GaussianBlurFilter(float width, float height, float blurSize, float bloom) :Abstract3x3PingPongFilter(width, height, ofVec2f(1, 1)) {
     _name = "Gaussian Blur";
     _blurSize = blurSize;
     _bloom = bloom;
-    _setup();
     _addParameter(new ParameterF("blurSize", blurSize));
     _addParameter(new ParameterF("bloom", bloom));
+    _setupShader();
 }
 GaussianBlurFilter::~GaussianBlurFilter() {}
+
 
 void GaussianBlurFilter::onKeyPressed(int key) {
     if (key==OF_KEY_LEFT) _blurSize--;
@@ -30,14 +31,18 @@ void GaussianBlurFilter::onKeyPressed(int key) {
     updateParameter("bloom", _bloom);
 }
 
-void GaussianBlurFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string GaussianBlurFilter::_getVertSrc() {
+    return AbstractFilter::_getVertSrc();
+}
+
+string GaussianBlurFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         uniform sampler2D texture0;
         uniform float blurSize;
         uniform float bloom;
         uniform float texelWidthOffset;
         uniform float texelHeightOffset;
-        
+
         void main() {
         float v;
         float pi = 3.141592653589793;
@@ -60,8 +65,4 @@ void GaussianBlurFilter::_setup() {
         
     }
     );
-
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getPassthroughVertexShader());
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();
 }

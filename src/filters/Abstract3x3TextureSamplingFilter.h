@@ -9,14 +9,18 @@
 #ifndef __ofxFilterLibraryExample__Abstract3x3TextureSamplingFilter__
 #define __ofxFilterLibraryExample__Abstract3x3TextureSamplingFilter__
 
-#include "ofMain.h"
+#include "AbstractFilter.h"
 
-class Abstract3x3TextureSamplingFilter {
+class Abstract3x3TextureSamplingFilter : public AbstractFilter {
 public:
-	Abstract3x3TextureSamplingFilter();
+	Abstract3x3TextureSamplingFilter(float width, float height, ofVec2f texelSpacing);
 	virtual ~Abstract3x3TextureSamplingFilter();
 
-private:
+protected:
+    virtual string  _getVertSrc();
+
+    ofVec2f         _texelSpacing;
+
 };
 
 #endif /* defined(__ofxFilterLibraryExample__Abstract3x3TextureSamplingFilter__) */

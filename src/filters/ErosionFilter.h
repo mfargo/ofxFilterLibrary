@@ -9,9 +9,9 @@
 #ifndef __filterSandbox__ErosionFilter__
 #define __filterSandbox__ErosionFilter__
 
-#include "AbstractTwoPassFilter.h"
+#include "Abstract3x3PingPongFilter.h"
 
-class ErosionFilter : public AbstractTwoPassFilter {
+class ErosionFilter : public Abstract3x3PingPongFilter {
 public:
 	ErosionFilter(float width, float height, int erosionRadius=2);
 	virtual ~ErosionFilter();
@@ -25,7 +25,8 @@ public:
     void            setErosionRadius(int erosionRadius);
     
 protected:
-    virtual void    _setup();
+    virtual string  _getFragSrc();
+    virtual string  _getVertSrc();
     
 private:
     string          _getFragSrcForRadius(int radius);

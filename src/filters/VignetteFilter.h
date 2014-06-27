@@ -17,7 +17,7 @@ public:
 	virtual ~VignetteFilter();
 
 protected:
-    virtual void    _setup();
+    virtual string  _getFragSrc();
 };
 
 #endif /* defined(__filterSandbox__VignetteFilter__) */

@@ -9,14 +9,19 @@
 #ifndef __ofxFilterLibraryExample__Abstract3x3PingPongFilter__
 #define __ofxFilterLibraryExample__Abstract3x3PingPongFilter__
 
-#include "ofMain.h"
+#include "AbstractPingPongRenderer.h"
+#include "Abstract3x3TextureSamplingFilter.h"
 
-class Abstract3x3PingPongFilter {
+class Abstract3x3PingPongFilter : public Abstract3x3TextureSamplingFilter, public AbstractPingPongRenderer {
 public:
-	Abstract3x3PingPongFilter();
+	Abstract3x3PingPongFilter(float width, float height, ofVec2f texelSpacing);
 	virtual ~Abstract3x3PingPongFilter();
 
-private:
+    virtual void    begin();
+    virtual void    end();
+
+protected:
+    
 };
 
 #endif /* defined(__ofxFilterLibraryExample__Abstract3x3PingPongFilter__) */

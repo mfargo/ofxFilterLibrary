@@ -11,9 +11,9 @@
 PerlinPixellationFilter::PerlinPixellationFilter(float width, float height, float scale) : AbstractFilter(width, height) {
     _name = "Perlin Pixellation";
     _scale = scale;
-    _setup();
     _addParameter(new ParameterF("fractionalWidthOfPixel", 0.05));
     _addParameter(new ParameterF("scale", 8.f));
+    _setupShader();
 }
 PerlinPixellationFilter::~PerlinPixellationFilter() {}
 
@@ -24,8 +24,8 @@ void PerlinPixellationFilter::onKeyPressed(int key) {
     updateParameter("scale", _scale);    
 }
 
-void PerlinPixellationFilter::_setup() {
-    string fragSrc = GLSL_STRING(120,
+string PerlinPixellationFilter::_getFragSrc() {
+    return GLSL_STRING(120,
         //precision highp float;
         uniform sampler2D inputImageTexture;
         
@@ -112,7 +112,4 @@ void PerlinPixellationFilter::_setup() {
             gl_FragColor = texture2D(inputImageTexture, samplePos );
         }
     );
-    _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getPassthroughVertexShader());
-    _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragSrc);
-    _shader.linkProgram();
 }
