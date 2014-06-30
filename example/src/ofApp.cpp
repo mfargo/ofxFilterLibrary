@@ -4,8 +4,7 @@ void ofApp::setup(){
     ofDisableArbTex();
     _video.initGrabber(640, 480);
     _currentFilter = 0;
-
-        // here's how you add individual filters
+    
     
     _filters.push_back(new KuwaharaFilter());
     _filters.push_back(new PerlinPixellationFilter(_video.getWidth(), _video.getHeight()));
@@ -25,6 +24,8 @@ void ofApp::setup(){
     _filters.push_back(new ToonFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new PixelateFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new HarrisCornerDetectionFilter(_video.getTextureReference()));
+    _filters.push_back(new MotionDetectionFilter(_video.getTextureReference()));
+    _filters.push_back(new LowPassFilter(_video.getWidth(), _video.getHeight(), 0.9));
 
         // and here's how you might daisy-chain a bunch of filters
     
@@ -59,7 +60,7 @@ void ofApp::draw(){
     _filters[_currentFilter]->end();
     ofPopMatrix();
     ofSetColor(255);
-    ofDrawBitmapString( _filters[_currentFilter]->getName() + " Filter\n"+ _filters[_currentFilter]->getInstructions(), ofPoint(40, 20));
+    ofDrawBitmapString( _filters[_currentFilter]->getName() + " Filter\n"+ _filters[_currentFilter]->getInstructions() + "\n\n(press SPACE to change filters)", ofPoint(40, 20));
 }
 
 void ofApp::keyPressed(int key){
