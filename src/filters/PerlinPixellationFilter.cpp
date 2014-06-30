@@ -12,7 +12,7 @@ PerlinPixellationFilter::PerlinPixellationFilter(float width, float height, floa
     _name = "Perlin Pixellation";
     _scale = scale;
     _addParameter(new ParameterF("fractionalWidthOfPixel", 0.05));
-    _addParameter(new ParameterF("scale", 8.f));
+    _addParameter(new ParameterF("scale", scale));
     _setupShader();
 }
 PerlinPixellationFilter::~PerlinPixellationFilter() {}
