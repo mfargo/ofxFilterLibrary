@@ -27,7 +27,12 @@
 #include "XYDerivativeFilter.h"
 #include "GrayscaleFilter.h"
 #include "HarrisCornerDetectionFilter.h"
+#include "LowPassFilter.h"
+#include "AverageColorFilter.h"
+#include "MotionDetectionFilter.h"
 
 #include "FilterChain.h"
+
+
 
 #endif
