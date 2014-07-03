@@ -25,6 +25,7 @@ void SobelEdgeDetectionFilter::onKeyPressed(int key) {
     updateParameter("edgeStrength", _edgeStrength);
 }
 
+
 string SobelEdgeDetectionFilter::_getFragSrc() {
     return GLSL_STRING(120,
         varying vec2 textureCoordinate;

@@ -9,14 +9,17 @@
 #ifndef __ofxFilterLibraryExample__SketchFilter__
 #define __ofxFilterLibraryExample__SketchFilter__
 
-#include "ofMain.h"
+#include "SobelEdgeDetectionFilter.h"
 
-class SketchFilter {
+class SketchFilter : public SobelEdgeDetectionFilter {
 public:
-	SketchFilter();
+	SketchFilter(float width, float height, float edgeStrength=1.f);
 	virtual ~SketchFilter();
 
-private:
+protected:
+    virtual string  _getFragSrc();
+    
+    
 };
 
 #endif /* defined(__ofxFilterLibraryExample__SketchFilter__) */

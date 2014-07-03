@@ -13,7 +13,7 @@
 
 class ToonFilter : public AbstractFilter {
 public:
-	ToonFilter(float width, float height, float threshold=0.2, float quantizationLevels=12.f);
+	ToonFilter(float width, float height, float threshold=0.2, float quantizationLevels=2.f);
 	virtual ~ToonFilter();
 
     virtual void    onKeyPressed(int key);
