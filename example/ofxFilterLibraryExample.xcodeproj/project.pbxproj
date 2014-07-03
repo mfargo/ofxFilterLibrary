@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A234558D19655CA900A75253 /* SketchFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A234558B19655CA900A75253 /* SketchFilter.cpp */; };
 		A24F19F7195D26D700BD1011 /* ColorPackingFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F19F5195D26D700BD1011 /* ColorPackingFilter.cpp */; };
 		A24F19FA195D340D00BD1011 /* AbstractPingPongRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F19F8195D340D00BD1011 /* AbstractPingPongRenderer.cpp */; };
 		A24F19FD195D36E400BD1011 /* Abstract3x3PingPongFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F19FB195D36E400BD1011 /* Abstract3x3PingPongFilter.cpp */; };
@@ -91,6 +92,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A234558B19655CA900A75253 /* SketchFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SketchFilter.cpp; sourceTree = "<group>"; };
+		A234558C19655CA900A75253 /* SketchFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SketchFilter.h; sourceTree = "<group>"; };
 		A24F19F5195D26D700BD1011 /* ColorPackingFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorPackingFilter.cpp; sourceTree = "<group>"; };
 		A24F19F6195D26D700BD1011 /* ColorPackingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPackingFilter.h; sourceTree = "<group>"; };
 		A24F19F8195D340D00BD1011 /* AbstractPingPongRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractPingPongRenderer.cpp; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 				A2DFD99A195AD83900552CA6 /* PerlinPixellationFilter.h */,
 				A2DFD99B195AD83900552CA6 /* PixelateFilter.cpp */,
 				A2DFD99C195AD83900552CA6 /* PixelateFilter.h */,
+				A234558B19655CA900A75253 /* SketchFilter.cpp */,
+				A234558C19655CA900A75253 /* SketchFilter.h */,
 				A2DFD99D195AD83900552CA6 /* SobelEdgeDetectionFilter.cpp */,
 				A2DFD99E195AD83900552CA6 /* SobelEdgeDetectionFilter.h */,
 				A2DFD99F195AD83900552CA6 /* TiltShiftFilter.cpp */,
@@ -501,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A234558D19655CA900A75253 /* SketchFilter.cpp in Sources */,
 				A2DFD9B7195AD83900552CA6 /* BilateralFilter.cpp in Sources */,
 				A2DFD9C3195AD83900552CA6 /* VignetteFilter.cpp in Sources */,
 				A2A9C11F195D1624002D2BDD /* Abstract3x3TextureSamplingFilter.cpp in Sources */,
