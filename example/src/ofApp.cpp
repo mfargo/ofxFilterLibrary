@@ -7,6 +7,7 @@ void ofApp::setup(){
     
     
     _filters.push_back(new KuwaharaFilter());
+    _filters.push_back(new SketchFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new PerlinPixellationFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new XYDerivativeFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new ZoomBlurFilter());
@@ -52,9 +53,11 @@ void ofApp::update(){
 }
 
 void ofApp::draw(){
+    ofBackground(0, 0, 0);
     ofSetColor(255);
     ofPushMatrix();
-    ofScale(2, 2);
+    ofScale(-2, 2);
+    ofTranslate(-_video.getWidth(), 0);
     _filters[_currentFilter]->begin();
     _video.draw(0,0);
     _filters[_currentFilter]->end();
@@ -68,5 +71,6 @@ void ofApp::keyPressed(int key){
         _currentFilter ++;
         if (_currentFilter>=_filters.size()) _currentFilter = 0;
     }
+    else if (key=='f') ofToggleFullscreen();
     else _filters[_currentFilter]->onKeyPressed(key);
 }
