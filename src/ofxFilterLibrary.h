@@ -17,7 +17,6 @@
 #include "LookupFilter.h"
 #include "VoronoiFilter.h"
 #include "VignetteFilter.h"
-#include "SobelEdgeDetectionFilter.h"
 #include "PerlinPixellationFilter.h"
 #include "PixelateFilter.h"
 #include "EmbossFilter.h"
@@ -30,6 +29,8 @@
 #include "LowPassFilter.h"
 #include "AverageColorFilter.h"
 #include "MotionDetectionFilter.h"
+#include "SketchFilter.h"
+#include "MultiplyBlendFilter.h"
 
 #include "FilterChain.h"
 
