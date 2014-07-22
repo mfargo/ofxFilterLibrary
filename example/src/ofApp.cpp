@@ -2,18 +2,19 @@
 
 void ofApp::setup(){
     ofDisableArbTex();
-    _video.initGrabber(640, 480);
+    _video.initGrabber(1280, 720);
     _currentFilter = 0;
     
     
     _filters.push_back(new KuwaharaFilter());
+    _filters.push_back(new SobelEdgeDetectionFilter(_video.getWidth(), _video.getHeight()));
+    _filters.push_back(new BilateralFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new SketchFilter(_video.getWidth(), _video.getHeight()));
+    _filters.push_back(new DilationFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new PerlinPixellationFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new XYDerivativeFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new ZoomBlurFilter());
     _filters.push_back(new EmbossFilter(_video.getWidth(), _video.getHeight(), 2.f));
-    _filters.push_back(new BilateralFilter(_video.getWidth(), _video.getHeight()));
-    _filters.push_back(new SobelEdgeDetectionFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new TiltShiftFilter(_video.getTextureReference()));
     _filters.push_back(new VoronoiFilter(_video.getTextureReference()));    
     _filters.push_back(new CGAColorspaceFilter());
@@ -56,14 +57,14 @@ void ofApp::draw(){
     ofBackground(0, 0, 0);
     ofSetColor(255);
     ofPushMatrix();
-    ofScale(-2, 2);
+    ofScale(-1, 1);
     ofTranslate(-_video.getWidth(), 0);
     _filters[_currentFilter]->begin();
     _video.draw(0,0);
     _filters[_currentFilter]->end();
     ofPopMatrix();
     ofSetColor(255);
-    ofDrawBitmapString( _filters[_currentFilter]->getName() + " Filter\n"+ _filters[_currentFilter]->getInstructions() + "\n\n(press SPACE to change filters)", ofPoint(40, 20));
+    ofDrawBitmapString( _filters[_currentFilter]->getName() + " Filter\n(press SPACE to change filters)", ofPoint(40, 20));
 }
 
 void ofApp::keyPressed(int key){
@@ -72,5 +73,4 @@ void ofApp::keyPressed(int key){
         if (_currentFilter>=_filters.size()) _currentFilter = 0;
     }
     else if (key=='f') ofToggleFullscreen();
-    else _filters[_currentFilter]->onKeyPressed(key);
 }
