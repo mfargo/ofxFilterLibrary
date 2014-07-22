@@ -16,10 +16,6 @@ public:
 	ToonFilter(float width, float height, float threshold=0.2, float quantizationLevels=2.f);
 	virtual ~ToonFilter();
 
-    virtual void    onKeyPressed(int key);
-    virtual string  getInstructions() {
-        return "Left and Right change threshold: " + ofToString(_threshold) + "\nUp and Down change quantization: " + ofToString(_quantizationLevels);
-    }
     
 protected:
     virtual string  _getVertSrc();

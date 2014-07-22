@@ -10,6 +10,7 @@
 
 Abstract3x3TextureSamplingFilter::Abstract3x3TextureSamplingFilter(float width, float height, ofVec2f texelSpacing) : AbstractFilter(width, height) {
     _texelSpacing = texelSpacing;
+    //printf(" SPA: %f %f\n", _texelSpacing.x/getWidth(), _texelSpacing.y/getHeight());
     _addParameter(new ParameterF("texelWidthOffset", _texelSpacing.x/getWidth()));
     _addParameter(new ParameterF("texelHeightOffset", _texelSpacing.y/getHeight()));
     _setupShader();
@@ -19,8 +20,8 @@ Abstract3x3TextureSamplingFilter::~Abstract3x3TextureSamplingFilter() {}
 
 string Abstract3x3TextureSamplingFilter::_getVertSrc() {
     return GLSL_STRING(120,
-       uniform float texelWidth;
-       uniform float texelHeight;
+       uniform float texelWidthOffset;
+       uniform float texelHeightOffset;
        
        varying vec2 textureCoordinate;
        varying vec2 leftTextureCoordinate;
@@ -34,18 +35,16 @@ string Abstract3x3TextureSamplingFilter::_getVertSrc() {
        varying vec2 bottomLeftTextureCoordinate;
        varying vec2 bottomRightTextureCoordinate;
        
-       void main()
-       {
+       void main(){
            gl_TexCoord[0] = gl_MultiTexCoord0;
            gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
            textureCoordinate = gl_TexCoord[0].xy;
            
-           vec2 widthStep = vec2(texelWidth, 0.0);
-           vec2 heightStep = vec2(0.0, texelHeight);
-           vec2 widthHeightStep = vec2(texelWidth, texelHeight);
-           vec2 widthNegativeHeightStep = vec2(texelWidth, -texelHeight);
+           vec2 widthStep = vec2(texelWidthOffset, 0.0);
+           vec2 heightStep = vec2(0.0, texelHeightOffset);
+           vec2 widthHeightStep = vec2(texelWidthOffset, texelHeightOffset);
+           vec2 widthNegativeHeightStep = vec2(texelWidthOffset, -texelHeightOffset);
            
-           textureCoordinate = textureCoordinate.xy;
            leftTextureCoordinate = textureCoordinate.xy - widthStep;
            rightTextureCoordinate = textureCoordinate.xy + widthStep;
            
@@ -59,3 +58,4 @@ string Abstract3x3TextureSamplingFilter::_getVertSrc() {
        }
     );
 }
+

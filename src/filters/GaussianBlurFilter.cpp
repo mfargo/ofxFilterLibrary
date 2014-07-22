@@ -20,17 +20,6 @@ GaussianBlurFilter::GaussianBlurFilter(float width, float height, float blurSize
 GaussianBlurFilter::~GaussianBlurFilter() {}
 
 
-void GaussianBlurFilter::onKeyPressed(int key) {
-    if (key==OF_KEY_LEFT) _blurSize--;
-    else if (key==OF_KEY_RIGHT) _blurSize++;
-    else if (key==OF_KEY_UP) _bloom += 0.1;
-    else if (key==OF_KEY_DOWN) _bloom -= 0.1;
-    if (_blurSize<0) _blurSize = 0;
-    if (_bloom<0) _bloom = 0;
-    updateParameter("blurSize", _blurSize);
-    updateParameter("bloom", _bloom);
-}
-
 string GaussianBlurFilter::_getVertSrc() {
     return AbstractFilter::_getVertSrc();
 }

@@ -17,12 +17,6 @@ PerlinPixellationFilter::PerlinPixellationFilter(float width, float height, floa
 }
 PerlinPixellationFilter::~PerlinPixellationFilter() {}
 
-void PerlinPixellationFilter::onKeyPressed(int key) {
-    if (key==OF_KEY_UP) _scale++;
-    else if (key==OF_KEY_DOWN) _scale--;
-    if (_scale<0) _scale =0;
-    updateParameter("scale", _scale);    
-}
 
 string PerlinPixellationFilter::_getFragSrc() {
     return GLSL_STRING(120,

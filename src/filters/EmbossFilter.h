@@ -19,10 +19,6 @@ public:
     float           getIntensity() { return _intensity; }
     void            setIntensity(float intensity);
   
-    virtual void    onKeyPressed(int key);
-    
-    virtual string  getInstructions() { return "Up and Down change intensity: " + ofToString(_intensity); }
-
 protected:
     virtual string  _getFragSrc();
     virtual string  _getVertSrc();

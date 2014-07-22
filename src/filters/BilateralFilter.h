@@ -16,9 +16,6 @@ public:
 	BilateralFilter(float width, float height, float blurOffset=4.f, float normalization=6.f);
 	virtual ~BilateralFilter();
 
-    virtual void    onKeyPressed(int key);
-    virtual string  getInstructions() { return "Up and Down change blur offset: " + ofToString(_texelSpacing.x) + "\nLeft and Right to change normalization: " + ofToString(_normalization); }
-
     
     float           getBlurOffset() { return _texelSpacing.x; }
     void            setBlurOffset(float blurOffset) { _texelSpacing = ofVec2f(blurOffset, blurOffset); }

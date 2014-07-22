@@ -1,35 +1,35 @@
 //
-//  ErosionFilter.cpp
-//  filterSandbox
+//  DilationFilter.cpp
+//  ofxFilterLibraryExample
 //
-//  Created by Matthew Fargo on 2014/06/25.
+//  Created by Matthew Fargo on 2014/07/17.
 //
 //
 
-#include "ErosionFilter.h"
+#include "DilationFilter.h"
 
-ErosionFilter::ErosionFilter(float width, float height, int erosionRadius) : Abstract3x3PingPongFilter(width, height, ofVec2f(erosionRadius, erosionRadius)) {
+DilationFilter::DilationFilter(float width, float height, int dilationRadius) : Abstract3x3PingPongFilter(width, height, ofVec2f(dilationRadius, dilationRadius)) {
+    _name = "Dilation Filter";
     _setupShader();
 }
-ErosionFilter::~ErosionFilter() {}
+DilationFilter::~DilationFilter() {}
 
 
 
-
-void ErosionFilter::setErosionRadius(int erosionRadius) {
-    _texelSpacing.x = erosionRadius;
-    _texelSpacing.y = erosionRadius;
+void DilationFilter::setDilationRadius(int dilationRadius) {
+    _texelSpacing.x = dilationRadius;
+    _texelSpacing.y = dilationRadius;
 }
 
-string ErosionFilter::_getFragSrc() {
+string DilationFilter::_getFragSrc() {
     return _getFragSrcForRadius(_texelSpacing.x);
 }
 
-string ErosionFilter::_getVertSrc() {
+string DilationFilter::_getVertSrc() {
     return _getVertSrcForRadius(_texelSpacing.x);
 }
 
-string ErosionFilter::_getVertSrcForRadius(int radius) {
+string DilationFilter::_getVertSrcForRadius(int radius) {
     switch (radius) {
         case 1:
             return GLSL_STRING(120,
@@ -113,8 +113,6 @@ string ErosionFilter::_getVertSrcForRadius(int radius) {
             break;
         default:
             return GLSL_STRING(120,
-                               attribute vec4 position;
-                               attribute vec2 inputTextureCoordinate;
                                
                                uniform float texelWidthOffset;
                                uniform float texelHeightOffset;
@@ -148,32 +146,32 @@ string ErosionFilter::_getVertSrcForRadius(int radius) {
                                );
             break;
             
-
+            
     }
 }
 
-string ErosionFilter::_getFragSrcForRadius(int radius) {
+string DilationFilter::_getFragSrcForRadius(int radius) {
     switch (radius) {
         case 1:
-        return GLSL_STRING(120,
-                           varying vec2 centerTextureCoordinate;
-                           varying vec2 oneStepPositiveTextureCoordinate;
-                           varying vec2 oneStepNegativeTextureCoordinate;
-                           
-                           uniform sampler2D inputImageTexture;
-                           
-                           void main()
-                           {
-                               float centerIntensity = texture2D(inputImageTexture, centerTextureCoordinate).r;
-                               float oneStepPositiveIntensity = texture2D(inputImageTexture, oneStepPositiveTextureCoordinate).r;
-                               float oneStepNegativeIntensity = texture2D(inputImageTexture, oneStepNegativeTextureCoordinate).r;
+            return GLSL_STRING(120,
+                               varying vec2 centerTextureCoordinate;
+                               varying vec2 oneStepPositiveTextureCoordinate;
+                               varying vec2 oneStepNegativeTextureCoordinate;
                                
-                               float minValue = min(centerIntensity, oneStepPositiveIntensity);
-                               minValue = min(minValue, oneStepNegativeIntensity);
+                               uniform sampler2D inputImageTexture;
                                
-                               gl_FragColor = vec4(vec3(minValue), 1.0);
-                           }
-                           );
+                               void main()
+                               {
+                                   float centerIntensity = texture2D(inputImageTexture, centerTextureCoordinate).r;
+                                   float oneStepPositiveIntensity = texture2D(inputImageTexture, oneStepPositiveTextureCoordinate).r;
+                                   float oneStepNegativeIntensity = texture2D(inputImageTexture, oneStepNegativeTextureCoordinate).r;
+                                   
+                                   float maxValue = max(centerIntensity, oneStepPositiveIntensity);
+                                   maxValue = max(maxValue, oneStepNegativeIntensity);
+                                   
+                                   gl_FragColor = vec4(vec3(maxValue), 1.0);
+                               }
+                               );
             break;
         case 2:
             return GLSL_STRING(120,
@@ -193,12 +191,12 @@ string ErosionFilter::_getFragSrcForRadius(int radius) {
                                    float twoStepsPositiveIntensity = texture2D(inputImageTexture, twoStepsPositiveTextureCoordinate).r;
                                    float twoStepsNegativeIntensity = texture2D(inputImageTexture, twoStepsNegativeTextureCoordinate).r;
                                    
-                                   float minValue = min(centerIntensity, oneStepPositiveIntensity);
-                                   minValue = min(minValue, oneStepNegativeIntensity);
-                                   minValue = min(minValue, twoStepsPositiveIntensity);
-                                   minValue = min(minValue, twoStepsNegativeIntensity);
+                                   float maxValue = max(centerIntensity, oneStepPositiveIntensity);
+                                   maxValue = max(maxValue, oneStepNegativeIntensity);
+                                   maxValue = max(maxValue, twoStepsPositiveIntensity);
+                                   maxValue = max(maxValue, twoStepsNegativeIntensity);
                                    
-                                   gl_FragColor = vec4(vec3(minValue), 1.0);
+                                   gl_FragColor = vec4(vec3(maxValue), 1.0);
                                }
                                );
         case 3:
@@ -223,14 +221,14 @@ string ErosionFilter::_getFragSrcForRadius(int radius) {
                                    float threeStepsPositiveIntensity = texture2D(inputImageTexture, threeStepsPositiveTextureCoordinate).r;
                                    float threeStepsNegativeIntensity = texture2D(inputImageTexture, threeStepsNegativeTextureCoordinate).r;
                                    
-                                   float minValue = min(centerIntensity, oneStepPositiveIntensity);
-                                   minValue = min(minValue, oneStepNegativeIntensity);
-                                   minValue = min(minValue, twoStepsPositiveIntensity);
-                                   minValue = min(minValue, twoStepsNegativeIntensity);
-                                   minValue = min(minValue, threeStepsPositiveIntensity);
-                                   minValue = min(minValue, threeStepsNegativeIntensity);
+                                   float maxValue = max(centerIntensity, oneStepPositiveIntensity);
+                                   maxValue = max(maxValue, oneStepNegativeIntensity);
+                                   maxValue = max(maxValue, twoStepsPositiveIntensity);
+                                   maxValue = max(maxValue, twoStepsNegativeIntensity);
+                                   maxValue = max(maxValue, threeStepsPositiveIntensity);
+                                   maxValue = max(maxValue, threeStepsNegativeIntensity);
                                    
-                                   gl_FragColor = vec4(vec3(minValue), 1.0);
+                                   gl_FragColor = vec4(vec3(maxValue), 1.0);
                                }
                                );
             break;
@@ -260,18 +258,19 @@ string ErosionFilter::_getFragSrcForRadius(int radius) {
                                    float fourStepsPositiveIntensity = texture2D(inputImageTexture, fourStepsPositiveTextureCoordinate).r;
                                    float fourStepsNegativeIntensity = texture2D(inputImageTexture, fourStepsNegativeTextureCoordinate).r;
                                    
-                                   float minValue = min(centerIntensity, oneStepPositiveIntensity);
-                                   minValue = min(minValue, oneStepNegativeIntensity);
-                                   minValue = min(minValue, twoStepsPositiveIntensity);
-                                   minValue = min(minValue, twoStepsNegativeIntensity);
-                                   minValue = min(minValue, threeStepsPositiveIntensity);
-                                   minValue = min(minValue, threeStepsNegativeIntensity);
-                                   minValue = min(minValue, fourStepsPositiveIntensity);
-                                   minValue = min(minValue, fourStepsNegativeIntensity);
+                                   float maxValue = max(centerIntensity, oneStepPositiveIntensity);
+                                   maxValue = max(maxValue, oneStepNegativeIntensity);
+                                   maxValue = max(maxValue, twoStepsPositiveIntensity);
+                                   maxValue = max(maxValue, twoStepsNegativeIntensity);
+                                   maxValue = max(maxValue, threeStepsPositiveIntensity);
+                                   maxValue = max(maxValue, threeStepsNegativeIntensity);
+                                   maxValue = max(maxValue, fourStepsPositiveIntensity);
+                                   maxValue = max(maxValue, fourStepsNegativeIntensity);
                                    
-                                   gl_FragColor = vec4(vec3(minValue), 1.0);
+                                   gl_FragColor = vec4(vec3(maxValue), 1.0);
                                }
                                );
             break;
     }
 }
+

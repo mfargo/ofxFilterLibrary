@@ -16,10 +16,6 @@ public:
 	ErosionFilter(float width, float height, int erosionRadius=2);
 	virtual ~ErosionFilter();
 
-    virtual void    onKeyPressed(int key);
-    
-    virtual string  getInstructions() { return "Up and Down change erosion radius: " + ofToString(getErosionRadius()); }
-
     
     int             getErosionRadius() { return _texelSpacing.x; }
     void            setErosionRadius(int erosionRadius);

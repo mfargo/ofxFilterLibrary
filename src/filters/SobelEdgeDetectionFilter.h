@@ -15,10 +15,7 @@ class SobelEdgeDetectionFilter : public AbstractFilter {
 public:
 	SobelEdgeDetectionFilter(float width, float height, float edgeStrength=1.f);
 	virtual ~SobelEdgeDetectionFilter();
-
-    virtual void    onKeyPressed(int key);
-    virtual string  getInstructions() { return "Left and Right change edge strength: " + ofToString(_edgeStrength); }
-
+    
     
 protected:
     virtual string  _getFragSrc();

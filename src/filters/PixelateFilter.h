@@ -16,9 +16,6 @@ public:
 	PixelateFilter(float width, float height, float pixelRatio=0.05);
 	virtual ~PixelateFilter();
 
-    virtual void    onKeyPressed(int key);
-    virtual string  getInstructions() { return "Up and Down change pixel size: " + ofToString(_pixelRatio); }
-
     
 protected:
     virtual string  _getFragSrc();

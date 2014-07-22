@@ -20,16 +20,6 @@ ToonFilter::ToonFilter(float width, float height, float threshold, float quantiz
 }
 ToonFilter::~ToonFilter() {}
 
-void ToonFilter::onKeyPressed(int key) {
-    if (key==OF_KEY_UP) _quantizationLevels ++;
-    else if (key==OF_KEY_DOWN) _quantizationLevels--;
-    else if (key==OF_KEY_LEFT) _threshold-=0.1f;
-    else if (key==OF_KEY_RIGHT) _threshold+=0.1f;
-    if (_quantizationLevels<0) _quantizationLevels = 0;
-    if (_threshold<0) _threshold = 0;
-    updateParameter("quantizationLevels", _quantizationLevels);
-    updateParameter("threshold", _threshold);
-}
 
 string ToonFilter::_getFragSrc() {
     return GLSL_STRING(120,

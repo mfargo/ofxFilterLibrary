@@ -17,13 +17,6 @@ PixelateFilter::PixelateFilter(float width, float height, float pixelRatio) : Ab
 }
 PixelateFilter::~PixelateFilter() {}
 
-void PixelateFilter::onKeyPressed(int key) {
-    if (key==OF_KEY_UP) _pixelRatio+=0.01;
-    else if (key==OF_KEY_DOWN) _pixelRatio-=0.01;
-    if (_pixelRatio<0) _pixelRatio = 0;
-    else if (_pixelRatio>1) _pixelRatio = 1;
-    updateParameter("fractionalWidthOfPixel", _pixelRatio);
-}
 
 string PixelateFilter::_getFragSrc() {
     return GLSL_STRING(120,

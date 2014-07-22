@@ -17,11 +17,9 @@ public:
 	virtual ~TiltShiftFilter();
 
     virtual void    begin();
-    virtual void    onKeyPressed(int key);
 
     virtual void    describeParameters();
     GaussianBlurFilter *getGaussianBlurFilter() { return _gaussianBlurFilter; }
-    virtual string  getInstructions() { return "Up and Down change vertical focus"; }
 
 protected:
     virtual string      _getFragSrc();

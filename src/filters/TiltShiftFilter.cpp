@@ -45,15 +45,6 @@ string TiltShiftFilter::_getFragSrc() {
     );
 }
 
-void TiltShiftFilter::onKeyPressed(int key) {
-    if (key==OF_KEY_UP)
-        _focusPercent = ofClamp(_focusPercent-0.01, 0, 1);
-    else if (key==OF_KEY_DOWN)
-        _focusPercent = ofClamp(_focusPercent+0.01, 0, 1);
-    updateParameter("topFocusLevel", _focusPercent);
-    updateParameter("bottomFocusLevel", 1.f - _focusPercent);
-}
-
 void TiltShiftFilter::begin() {
     _gaussianBlurFilter->begin();
     _texture.draw(0, 0);

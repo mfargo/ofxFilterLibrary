@@ -16,10 +16,6 @@ public:
 	PerlinPixellationFilter(float width, float height, float scale = 8.f);
 	virtual ~PerlinPixellationFilter();
 
-    virtual void    onKeyPressed(int key);
-    virtual string  getInstructions() {
-        return "Up and Down change scale: " + ofToString(_scale);
-    }
     
 protected:
     virtual string  _getFragSrc();

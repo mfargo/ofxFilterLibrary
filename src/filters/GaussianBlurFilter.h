@@ -16,10 +16,6 @@ public:
 	GaussianBlurFilter(float width, float height, float blurSize=7.f, float bloom=1.f);
 	virtual ~GaussianBlurFilter();
 
-    virtual void    onKeyPressed(int key);
-    
-    virtual string  getInstructions() { return "Left and Right change blur size: " + ofToString(_blurSize) + "\nUp and Down change bloom: " + ofToString(_bloom); }
-    
 
     
 protected:

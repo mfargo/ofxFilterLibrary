@@ -18,12 +18,6 @@ EmbossFilter::EmbossFilter(float width, float height, float intensity) : Abstrac
 }
 EmbossFilter::~EmbossFilter() {}
 
-void EmbossFilter::onKeyPressed(int key) {
-    if (key==OF_KEY_UP) _intensity+=0.2f;
-    else if (key==OF_KEY_DOWN) _intensity-=0.2f;
-    if (_intensity<0) _intensity = 0;
-    setIntensity(_intensity);
-}
 
 string EmbossFilter::_getFragSrc() {
     return GLSL_STRING(120,

@@ -16,19 +16,6 @@ BilateralFilter::BilateralFilter(float width, float height, float blurOffset, fl
 }
 BilateralFilter::~BilateralFilter() {}
 
-
-void BilateralFilter::onKeyPressed(int key) {
-    float blurOffset = _texelSpacing.x;
-    if (key==OF_KEY_DOWN) blurOffset -= 0.5f;
-    else if (key==OF_KEY_UP) blurOffset += 0.5f;
-    else if (key==OF_KEY_LEFT) _normalization -=0.5;
-    else if (key==OF_KEY_RIGHT) _normalization += 0.5;
-    if (blurOffset<0) blurOffset = 0;
-    if (_normalization<0) _normalization = 0;
-    updateParameter("distanceNormalizationFactor", _normalization);
-    _texelSpacing = ofVec2f(blurOffset, blurOffset);
-}
-
 string BilateralFilter::_getFragSrc() {
     return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
@@ -54,49 +41,49 @@ string BilateralFilter::_getFragSrc() {
             sum = centralColor * 0.18;
             
             sampleColor = texture2D(inputImageTexture, blurCoordinates[0]);
-            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, 1.0);
+            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, centralColor.a);
             gaussianWeight = 0.05 * (1.0 - distanceFromCentralColor);
             gaussianWeightTotal += gaussianWeight;
             sum += sampleColor * gaussianWeight;
             
             sampleColor = texture2D(inputImageTexture, blurCoordinates[1]);
-            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, 1.0);
+            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, centralColor.a);
             gaussianWeight = 0.09 * (1.0 - distanceFromCentralColor);
             gaussianWeightTotal += gaussianWeight;
             sum += sampleColor * gaussianWeight;
             
             sampleColor = texture2D(inputImageTexture, blurCoordinates[2]);
-            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, 1.0);
+            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, centralColor.a);
             gaussianWeight = 0.12 * (1.0 - distanceFromCentralColor);
             gaussianWeightTotal += gaussianWeight;
             sum += sampleColor * gaussianWeight;
             
             sampleColor = texture2D(inputImageTexture, blurCoordinates[3]);
-            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, 1.0);
+            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, centralColor.a);
             gaussianWeight = 0.15 * (1.0 - distanceFromCentralColor);
             gaussianWeightTotal += gaussianWeight;
             sum += sampleColor * gaussianWeight;
             
             sampleColor = texture2D(inputImageTexture, blurCoordinates[5]);
-            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, 1.0);
+            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, centralColor.a);
             gaussianWeight = 0.15 * (1.0 - distanceFromCentralColor);
             gaussianWeightTotal += gaussianWeight;
             sum += sampleColor * gaussianWeight;
             
             sampleColor = texture2D(inputImageTexture, blurCoordinates[6]);
-            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, 1.0);
+            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, centralColor.a);
             gaussianWeight = 0.12 * (1.0 - distanceFromCentralColor);
             gaussianWeightTotal += gaussianWeight;
             sum += sampleColor * gaussianWeight;
             
             sampleColor = texture2D(inputImageTexture, blurCoordinates[7]);
-            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, 1.0);
+            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, centralColor.a);
             gaussianWeight = 0.09 * (1.0 - distanceFromCentralColor);
             gaussianWeightTotal += gaussianWeight;
             sum += sampleColor * gaussianWeight;
             
             sampleColor = texture2D(inputImageTexture, blurCoordinates[8]);
-            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, 1.0);
+            distanceFromCentralColor = min(distance(centralColor, sampleColor) * distanceNormalizationFactor, centralColor.a);
             gaussianWeight = 0.05 * (1.0 - distanceFromCentralColor);
             gaussianWeightTotal += gaussianWeight;
             sum += sampleColor * gaussianWeight;

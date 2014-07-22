@@ -16,13 +16,6 @@ KuwaharaFilter::KuwaharaFilter(int radius) : AbstractFilter(0, 0) {
 }
 KuwaharaFilter::~KuwaharaFilter() {}
 
-void KuwaharaFilter::onKeyPressed(int key) {
-    if (key==OF_KEY_DOWN) _radius--;
-    else if (key==OF_KEY_UP) _radius++;
-    if (_radius<0) _radius = 0;
-    updateParameter("radius", _radius);
-}
-
 string KuwaharaFilter::_getFragSrc() {
     return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
@@ -32,6 +25,9 @@ string KuwaharaFilter::_getFragSrc() {
 
         void main (void) {
             vec2 uv = gl_TexCoord[0].xy;
+            
+            vec4 textureColor = texture2D(inputImageTexture, uv);
+            
             float n = float((radius + 1) * (radius + 1));
             int i; int j;
             vec3 m0 = vec3(0.0); vec3 m1 = vec3(0.0); vec3 m2 = vec3(0.0); vec3 m3 = vec3(0.0);
@@ -78,7 +74,7 @@ string KuwaharaFilter::_getFragSrc() {
             float sigma2 = s0.r + s0.g + s0.b;
             if (sigma2 < min_sigma2) {
                 min_sigma2 = sigma2;
-                gl_FragColor = vec4(m0, 1.0);
+                gl_FragColor = vec4(m0, textureColor.a);
             }
             
             m1 /= n;
@@ -87,7 +83,7 @@ string KuwaharaFilter::_getFragSrc() {
             sigma2 = s1.r + s1.g + s1.b;
             if (sigma2 < min_sigma2) {
                 min_sigma2 = sigma2;
-                gl_FragColor = vec4(m1, 1.0);
+                gl_FragColor = vec4(m1, textureColor.a);
             }
             
             m2 /= n;
@@ -96,7 +92,7 @@ string KuwaharaFilter::_getFragSrc() {
             sigma2 = s2.r + s2.g + s2.b;
             if (sigma2 < min_sigma2) {
                 min_sigma2 = sigma2;
-                gl_FragColor = vec4(m2, 1.0);
+                gl_FragColor = vec4(m2, textureColor.a);
             }
             
             m3 /= n;
@@ -105,7 +101,7 @@ string KuwaharaFilter::_getFragSrc() {
             sigma2 = s3.r + s3.g + s3.b;
             if (sigma2 < min_sigma2) {
                 min_sigma2 = sigma2;
-                gl_FragColor = vec4(m3, 1.0);
+                gl_FragColor = vec4(m3, textureColor.a);
             }
         }
     );

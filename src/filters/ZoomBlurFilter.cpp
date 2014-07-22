@@ -16,13 +16,6 @@ ZoomBlurFilter::ZoomBlurFilter(float blurSize) : AbstractFilter(0, 0) {
 }
 ZoomBlurFilter::~ZoomBlurFilter() {}
 
-void ZoomBlurFilter::onKeyPressed(int key) {
-    if (key==OF_KEY_UP) _blurSize += 0.1;
-    else if (key==OF_KEY_DOWN) _blurSize -= 0.1;
-    
-    //if (_blurSize<0) _blurSize = 0;
-    //updateParameter("blurSize", _blurSize);
-}
 
 string ZoomBlurFilter::_getFragSrc() {
     return GLSL_STRING(120,

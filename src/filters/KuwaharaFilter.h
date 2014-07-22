@@ -15,9 +15,6 @@ class KuwaharaFilter : public AbstractFilter {
 public:
 	KuwaharaFilter(int radius=7);
 	virtual ~KuwaharaFilter();
-
-    virtual void    onKeyPressed(int key);
-    virtual string  getInstructions() { return "Up and Down change radius ("+ofToString(_radius)+")"; }
     
 protected:
     virtual string  _getFragSrc();

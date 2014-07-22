@@ -20,14 +20,11 @@ public:
     
     virtual void    begin();
     virtual void    end();
-
-    virtual void    onKeyPressed(int key) {}  // abstract
     
     float           getWidth() { return _width; }
     float           getHeight() { return _height; }
     virtual void    setWidth(float width) { _width = width; }
     virtual void    setHeight(float height) { _height = height; }
-    virtual string  getInstructions() { return ""; }
     ofShader &      getShader() { return _shader; }
     
 protected:
