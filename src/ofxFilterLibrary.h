@@ -32,6 +32,7 @@
 #include "MotionDetectionFilter.h"
 #include "SketchFilter.h"
 #include "MultiplyBlendFilter.h"
+#include "EdgeTangentFilter.h"
 
 #include "FilterChain.h"
 
