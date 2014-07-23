@@ -9,7 +9,7 @@
 #ifndef __filterSandbox__ParametricObject__
 #define __filterSandbox__ParametricObject__
 
-#include "AbstractParameterV.h"
+#include "ParameterV.h"
 #include "ParameterF.h"
 #include "ParameterI.h"
 #include "ParameterT.h"
@@ -35,7 +35,7 @@ public:
     AbstractParameter * updateParameter(string name, ofVec4f value) { ((Parameter4f *)_parameters[name])->setValue(value); }
     AbstractParameter * updateParameter(string name, ofMatrix4x4 value) { ((ParameterMatrix4f *)_parameters[name])->setValue(value); }
     AbstractParameter * updateParameter(string name, ofTexture value) { ((ParameterT *)_parameters[name])->setValue(value); }
-    AbstractParameter * updateParameter(string name, float * value) { ((AbstractParameterV *)_parameters[name])->setValue(value); }
+    AbstractParameter * updateParameter(string name, float * value) { ((ParameterV *)_parameters[name])->setValue(value); }
     AbstractParameter * getParameter(string name) { return _parameters[name]; }
     
     // utility

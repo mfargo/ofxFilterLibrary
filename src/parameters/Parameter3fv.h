@@ -9,11 +9,11 @@
 #ifndef ofxFilterLibraryExample_Parameter3fv_h
 #define ofxFilterLibraryExample_Parameter3fv_h
 
-#include "AbstractParameterV.h"
+#include "ParameterV.h"
 
-class Parameter3fv : public AbstractParameterV {
+class Parameter3fv : public ParameterV {
 public:
-	Parameter3fv(string name, float * value, int numValues) : AbstractParameterV(name, value, numValues) {
+	Parameter3fv(string name, float * value, int numValues) : ParameterV(name, value, numValues) {
         _type = FILTER_PARAMETER_3FV;
     }
 	virtual ~Parameter3fv() {}

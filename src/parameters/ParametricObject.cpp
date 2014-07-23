@@ -53,6 +53,9 @@ void ParametricObject::_updateParameter(ofShader * shader, AbstractParameter * p
         case FILTER_PARAMETER_MATRIX4F:
             shader->setUniformMatrix4f(parameter->getName(), ((ParameterMatrix4f *)parameter)->getValue() );
             break;
+        case FILTER_PARAMETER_FV:
+            shader->setUniform1fv(parameter->getName(), ((ParameterV *)parameter)->getValue() , ((ParameterV *)parameter)->getNumValues());
+            break;
         case FILTER_PARAMETER_2FV:
             shader->setUniform2fv(parameter->getName(), ((Parameter2fv *)parameter)->getValue() , ((Parameter2fv *)parameter)->getNumValues());
             break;
