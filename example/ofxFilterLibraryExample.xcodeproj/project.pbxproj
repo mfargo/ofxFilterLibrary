@@ -106,7 +106,6 @@
 		A271CFC1196141E400D7CEA4 /* AverageColorFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AverageColorFilter.h; sourceTree = "<group>"; };
 		A276AC14195D0517007AB1C2 /* Parameter2fv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parameter2fv.h; sourceTree = "<group>"; };
 		A276AC15195D0524007AB1C2 /* Parameter3fv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parameter3fv.h; sourceTree = "<group>"; };
-		A276AC16195D0739007AB1C2 /* AbstractParameterV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractParameterV.h; sourceTree = "<group>"; };
 		A2A71427196132A600FD4E8D /* LowPassFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LowPassFilter.cpp; sourceTree = "<group>"; };
 		A2A71428196132A600FD4E8D /* LowPassFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowPassFilter.h; sourceTree = "<group>"; };
 		A2A7142A196132E700FD4E8D /* AbstractTwoInputFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractTwoInputFilter.cpp; sourceTree = "<group>"; };
@@ -316,7 +315,6 @@
 			isa = PBXGroup;
 			children = (
 				A2DFD9AB195AD83900552CA6 /* AbstractParameter.h */,
-				A276AC16195D0739007AB1C2 /* AbstractParameterV.h */,
 				A2DFD9AC195AD83900552CA6 /* Parameter2f.h */,
 				A276AC14195D0517007AB1C2 /* Parameter2fv.h */,
 				A2DFD9AD195AD83900552CA6 /* Parameter3f.h */,
