@@ -43,21 +43,19 @@ string EdgeTangentFilter::_getFragSrc() {
                            float topRightColor = texture2D(inputImageTexture, topRightTextureCoordinate).r;
                            float topLeftColor = texture2D(inputImageTexture, topLeftTextureCoordinate).r;
                            
-                           centerColor.r = (topRightColor + 2.0*rightColor + bottomRightColor - topLeftColor - 2.0*leftColor - bottomLeftColor)/MAX_VAL;
-                           centerColor.g = (bottomLeftColor + 2.0*bottomColor + bottomRightColor - topLeftColor - 2.0*topColor - topRightColor)/MAX_VAL;
+                           centerColor.r = (topRightColor + 2*rightColor + bottomRightColor - topLeftColor - 2*leftColor - bottomLeftColor)/MAX_VAL;
+                           centerColor.g = (bottomLeftColor + 2*bottomColor + bottomRightColor - topLeftColor - 2*topColor - topRightColor)/MAX_VAL;
                            
-                           vec2 v = vec2(centerColor.r, centerColor.g);
-                           centerColor.r = -v.g;
-                           centerColor.g = v.r;
-                           centerColor.b = sqrt(centerColor.r*centerColor.r + centerColor.g*centerColor.g);
+                           vec4 v = vec4(-centerColor.g, centerColor.r, 0, centerColor.a);
+                           v.b = length(v.xy);
                            
-                           if (centerColor.b != 0.0) {
-                               centerColor.r /= centerColor.b;
-                               centerColor.g /= centerColor.b;
+                           if (v.b != 0.0) {
+                               v.r /= v.b;
+                               v.g /= v.b;
                            }
                            
-                           
-                           gl_FragColor = centerColor;
+                           v.b /= (1.0/320.0);
+                           gl_FragColor = v;
                        }
                        );
 }

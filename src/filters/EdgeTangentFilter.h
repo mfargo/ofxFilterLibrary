@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __ArtNouveau__EdgeTangentFilter__
-#define __ArtNouveau__EdgeTangentFilter__
+#ifndef __EdgeTangentFilter__
+#define __EdgeTangentFilter__
 
 #include "Abstract3x3TextureSamplingFilter.h"
 
@@ -22,4 +22,4 @@ private:
     
 };
 
-#endif /* defined(__ArtNouveau__EdgeTangentFilter__) */
+#endif /* defined(__EdgeTangentFilter__) */
