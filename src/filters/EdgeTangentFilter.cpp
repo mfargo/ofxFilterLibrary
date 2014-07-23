@@ -54,7 +54,6 @@ string EdgeTangentFilter::_getFragSrc() {
                                v.g /= v.b;
                            }
                            
-                           v.b /= (1.0/320.0);
                            gl_FragColor = v;
                        }
                        );
