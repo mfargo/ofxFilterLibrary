@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __ArtNouveau__MultiplyBlendFilter__
-#define __ArtNouveau__MultiplyBlendFilter__
+#ifndef __MultiplyBlendFilter__
+#define __MultiplyBlendFilter__
 
 #include "AbstractTwoInputFilter.h"
 
@@ -21,4 +21,4 @@ private:
 
 };
 
-#endif /* defined(__ArtNouveau__MultiplyBlendFilter__) */
+#endif /* defined(__MultiplyBlendFilter__) */

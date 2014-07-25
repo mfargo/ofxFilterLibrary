@@ -14,13 +14,15 @@
 
 class FilterChain : public AbstractFilter, public AbstractPingPongRenderer {
 public:
-	FilterChain(float width, float height, string name="Chain");
+	FilterChain(float width, float height, string name="Chain", int internalFormat=GL_RGBA);
 	virtual ~FilterChain();
     
     virtual void    begin();
     virtual void    end();
 
     void            addFilter(AbstractFilter * filter) { _filters.push_back(filter); }
+    AbstractFilter *getFilterAt(int index) { return _filters[index]; }
+    int             getNumFilters() { return _filters.size(); }
 
 protected:
     

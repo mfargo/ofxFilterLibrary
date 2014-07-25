@@ -21,7 +21,7 @@ public:
 
 protected:
     virtual string  _getFragSrc();
-    
+
     float           _mix;
 
 };

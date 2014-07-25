@@ -1,6 +1,6 @@
 //
 //  EdgeTangentFilter.h
-//  ArtNouveau
+//  ofxFilterLibraryExample
 //
 //  Created by Matthew Fargo on 2014/07/22.
 //
@@ -19,6 +19,7 @@ public:
     
 private:
     virtual string  _getFragSrc();
+    
     
 };
 

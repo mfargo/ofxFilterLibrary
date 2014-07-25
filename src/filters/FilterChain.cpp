@@ -8,7 +8,7 @@
 
 #include "FilterChain.h"
 
-FilterChain::FilterChain(float width, float height, string name) : AbstractFilter(width, height),AbstractPingPongRenderer(width, height) {
+FilterChain::FilterChain(float width, float height, string name, int internalFormat) : AbstractFilter(width, height),AbstractPingPongRenderer(width, height, internalFormat) {
     _name = name;
         // don't set up shader, cuz there ain't neccesarily one
 }

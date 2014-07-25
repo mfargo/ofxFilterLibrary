@@ -13,7 +13,7 @@
 
 class AbstractPingPongRenderer {
 public:
-	AbstractPingPongRenderer(float width, float height);
+	AbstractPingPongRenderer(float width, float height, int internalFormat=GL_RGBA);
 	virtual ~AbstractPingPongRenderer();
 
     void            ping();

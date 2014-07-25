@@ -1,6 +1,6 @@
 //
 //  ErosionFilter.h
-//  filterSandbox
+//  ofxFilterLibraryExample
 //
 //  Created by Matthew Fargo on 2014/06/25.
 //

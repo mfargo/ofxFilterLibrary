@@ -14,7 +14,7 @@
 
 class Abstract3x3PingPongFilter : public Abstract3x3TextureSamplingFilter, public AbstractPingPongRenderer {
 public:
-	Abstract3x3PingPongFilter(float width, float height, ofVec2f texelSpacing);
+	Abstract3x3PingPongFilter(float width, float height, ofVec2f texelSpacing, int internalFormat=GL_RGBA );
 	virtual ~Abstract3x3PingPongFilter();
 
     virtual void    begin();

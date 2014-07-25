@@ -10,7 +10,6 @@
 
 Abstract3x3TextureSamplingFilter::Abstract3x3TextureSamplingFilter(float width, float height, ofVec2f texelSpacing) : AbstractFilter(width, height) {
     _texelSpacing = texelSpacing;
-    //printf(" SPA: %f %f\n", _texelSpacing.x/getWidth(), _texelSpacing.y/getHeight());
     _addParameter(new ParameterF("texelWidthOffset", _texelSpacing.x/getWidth()));
     _addParameter(new ParameterF("texelHeightOffset", _texelSpacing.y/getHeight()));
     _setupShader();

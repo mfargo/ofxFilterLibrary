@@ -8,7 +8,7 @@
 
 #include "Abstract3x3PingPongFilter.h"
 
-Abstract3x3PingPongFilter::Abstract3x3PingPongFilter(float width, float height, ofVec2f texelSpacing) : AbstractPingPongRenderer(width, height), Abstract3x3TextureSamplingFilter(width, height, texelSpacing) {
+Abstract3x3PingPongFilter::Abstract3x3PingPongFilter(float width, float height, ofVec2f texelSpacing, int internalFormat) : AbstractPingPongRenderer(width, height, internalFormat), Abstract3x3TextureSamplingFilter(width, height, texelSpacing) {
 }
 Abstract3x3PingPongFilter::~Abstract3x3PingPongFilter() {}
 

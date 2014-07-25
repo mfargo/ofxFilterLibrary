@@ -8,10 +8,9 @@
 
 #include "AbstractPingPongRenderer.h"
 
-AbstractPingPongRenderer::AbstractPingPongRenderer(float width, float height) {
-    _ping.allocate(width, height);
-    _pong.allocate(width, height);
-
+AbstractPingPongRenderer::AbstractPingPongRenderer(float width, float height, int internalFormat) {
+    _ping.allocate(width, height, internalFormat);
+    _pong.allocate(width, height, internalFormat);
 }
 AbstractPingPongRenderer::~AbstractPingPongRenderer() {}
 

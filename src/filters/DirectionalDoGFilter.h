@@ -1,22 +1,26 @@
 //
 //  DirectionalDoGFilter.h
-//  ArtNouveau
+//  ofxFilterLibraryExample
 //
 //  Created by Matthew Fargo on 2014/07/22.
 //
 //
 
-#ifndef __ArtNouveau__DirectionalDoGFilter__
-#define __ArtNouveau__DirectionalDoGFilter__
+#ifndef __DirectionalDoGFilter__
+#define __DirectionalDoGFilter__
 
-#include "ofMain.h"
+#include "AbstractDoGFilter.h"
 
-class DirectionalDoGFilter {
+class DirectionalDoGFilter : public AbstractDoGFilter {
 public:
-	DirectionalDoGFilter();
+	DirectionalDoGFilter(float width, float height, float sigma, float tau);
 	virtual ~DirectionalDoGFilter();
 
-private:
+    
+protected:
+    
+    virtual string  _getFragSrc();
+    float           _sigma;
 };
 
-#endif /* defined(__ArtNouveau__DirectionalDoGFilter__) */
+#endif /* defined(__DirectionalDoGFilter__) */

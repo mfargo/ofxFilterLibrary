@@ -9,6 +9,7 @@
 #include "ErosionFilter.h"
 
 ErosionFilter::ErosionFilter(float width, float height, int erosionRadius) : Abstract3x3PingPongFilter(width, height, ofVec2f(erosionRadius, erosionRadius)) {
+    _name = "Erosion";
     _setupShader();
 }
 ErosionFilter::~ErosionFilter() {}
@@ -45,7 +46,7 @@ string ErosionFilter::_getVertSrcForRadius(int radius) {
                                {
                                    gl_TexCoord[0] = gl_MultiTexCoord0;
                                    gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
-                                   
+
                                    vec2 offset = vec2(texelWidthOffset, texelHeightOffset);
                                    
                                    centerTextureCoordinate = gl_TexCoord[0].xy;

@@ -47,7 +47,6 @@ string ThresholdedNonMaximumSuppressionFilter::_getFragSrc() {
                 float topRightColor = texture2D(inputImageTexture, topRightTextureCoordinate).r;
                 float topLeftColor = texture2D(inputImageTexture, topLeftTextureCoordinate).r;
                 
-                // Use a tiebreaker for pixels to the left and immediately above this one
                 float multiplier = 1.0 - step(centerColor.r, topColor);
                 multiplier = multiplier * 1.0 - step(centerColor.r, topLeftColor);
                 multiplier = multiplier * 1.0 - step(centerColor.r, leftColor);
@@ -62,8 +61,6 @@ string ThresholdedNonMaximumSuppressionFilter::_getFragSrc() {
                 finalValue = step(threshold, finalValue);
                 
                 gl_FragColor = vec4(finalValue, finalValue, finalValue, 1.0);
-                //
-                //     gl_FragColor = vec4((centerColor.rgb * step(maxValue, step(threshold, centerColor.r)) * multiplier), 1.0);
             }
         ) : GLSL_STRING(120,
             uniform sampler2D inputImageTexture;
@@ -94,7 +91,6 @@ string ThresholdedNonMaximumSuppressionFilter::_getFragSrc() {
                 float topRightColor = texture2D(inputImageTexture, topRightTextureCoordinate).r;
                 float topLeftColor = texture2D(inputImageTexture, topLeftTextureCoordinate).r;
                 
-                // Use a tiebreaker for pixels to the left and immediately above this one
                 float multiplier = 1.0 - step(centerColor.r, topColor);
                 multiplier = multiplier * 1.0 - step(centerColor.r, topLeftColor);
                 multiplier = multiplier * 1.0 - step(centerColor.r, leftColor);
@@ -109,8 +105,6 @@ string ThresholdedNonMaximumSuppressionFilter::_getFragSrc() {
                 finalValue = step(threshold, finalValue);
                 
                 gl_FragColor = vec4(finalValue, finalValue, finalValue, 1.0);
-                //
-                //     gl_FragColor = vec4((centerColor.rgb * step(maxValue, step(threshold, centerColor.r)) * multiplier), 1.0);
             }
         );
 }
