@@ -13,6 +13,11 @@ ParametricObject::ParametricObject() {
 ParametricObject::~ParametricObject() {}
 
 void ParametricObject::_addParameter(AbstractParameter *parameter) {
+    map<string, AbstractParameter *>::iterator it = _parameters.find(parameter->getName());
+    if(it != _parameters.end()) {   // delete the old one
+        delete it->second;
+        _parameters.erase(it);
+    }
     _parameters[parameter->getName()] = parameter;
 }
 

@@ -14,8 +14,9 @@
 class ParameterV : public AbstractParameter {
 public:
 	ParameterV(string name, float * value, int numValues) : AbstractParameter(name) {
-        _value = value;
         _numValues = numValues;
+        _value = value;
+        _type = FILTER_PARAMETER_FV;
     }
 	virtual ~ParameterV() {}
     
