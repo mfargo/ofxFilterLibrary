@@ -33,6 +33,7 @@
 #include "SketchFilter.h"
 #include "MultiplyBlendFilter.h"
 #include "EdgeTangentFilter.h"
+#include "BrightnessFilter.h"
 
 #include "FilterChain.h"
 
