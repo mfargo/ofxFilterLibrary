@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3876DA76-8D7A-4229-AF34-FE11F3A337A4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DoGExample</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4EE795D8-DD7F-442F-A54F-05AD8C343382</key>
+		<string>https://github.com/mfargo/ofxFilterLibrary.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DoGExample/DoGExample.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4EE795D8-DD7F-442F-A54F-05AD8C343382</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mfargo/ofxFilterLibrary.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4EE795D8-DD7F-442F-A54F-05AD8C343382</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4EE795D8-DD7F-442F-A54F-05AD8C343382</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxFilterLibrary</string>
+		</dict>
+	</array>
+</dict>
+</plist>
