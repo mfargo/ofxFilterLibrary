@@ -24,6 +24,7 @@ public:
     void        setValue(float * value) { _value = value; }
     int         getNumValues() { return _numValues; }
     
+    
 private:
     
     float *     _value;
