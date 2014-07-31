@@ -1,26 +1,24 @@
 //
-//  EmbossFilter.cpp
-//  filterSandbox
+//  Abstract3x3ConvolutionFilter.cpp
+//  ArtNouveau
 //
-//  Created by Matthew Fargo on 2014/06/24.
+//  Created by Matthew Fargo on 2014/07/30.
 //
 //
 
-#include "EmbossFilter.h"
+#include "Abstract3x3ConvolutionFilter.h"
 
-EmbossFilter::EmbossFilter(float width, float height, float intensity) : Abstract3x3ConvolutionFilter(width, height, ofVec2f(1, 1)) {
-    _name = "Emboss";
-    setIntensity(intensity);
-    _setupShader();
+Abstract3x3ConvolutionFilter::Abstract3x3ConvolutionFilter(float width, float height, ofVec2f texelSpacing) : Abstract3x3TextureSamplingFilter(width, height, texelSpacing) {
+    _addParameter(new ParameterMatrix4f("convolutionMatrix", _matrix));
 }
-EmbossFilter::~EmbossFilter() {}
+Abstract3x3ConvolutionFilter::~Abstract3x3ConvolutionFilter() {}
 
 
-string EmbossFilter::_getFragSrc() {
+string Abstract3x3ConvolutionFilter::_getFragSrc() {
     return GLSL_STRING(120,
         uniform sampler2D inputImageTexture;
         
-        uniform mat4 convolutionMatrix;
+        uniform mat3 convolutionMatrix;
         
         varying vec2 textureCoordinate;
         varying vec2 leftTextureCoordinate;
@@ -53,16 +51,5 @@ string EmbossFilter::_getFragSrc() {
             gl_FragColor = vec4(resultColor, centerColor.a);
         }
     );
-}
-
-
-void EmbossFilter::setIntensity(float intensity) {
-    _intensity = intensity;
-        // really just need a Matrix3x3, but ofShader doesn't support that so whatevs
-    _matrix.set(_intensity * (-2.0), -_intensity, 0, 0,
-                -_intensity, 1.0, _intensity, 0,
-                0.0f, _intensity, _intensity*2.f, 0,
-                0, 0, 0, 0);
-    updateParameter("convolutionMatrix", _matrix);
 
 }

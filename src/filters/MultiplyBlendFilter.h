@@ -13,7 +13,7 @@
 
 class MultiplyBlendFilter : public AbstractTwoInputFilter {
 public:
-	MultiplyBlendFilter(float width, float height);
+	MultiplyBlendFilter();
 	virtual ~MultiplyBlendFilter();
 
 private:

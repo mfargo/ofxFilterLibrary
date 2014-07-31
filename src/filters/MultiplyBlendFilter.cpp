@@ -8,7 +8,7 @@
 
 #include "MultiplyBlendFilter.h"
 
-MultiplyBlendFilter::MultiplyBlendFilter(float width, float height) : AbstractTwoInputFilter(width, height) {
+MultiplyBlendFilter::MultiplyBlendFilter() : AbstractTwoInputFilter(0, 0) {
     _setupShader();
 
 }

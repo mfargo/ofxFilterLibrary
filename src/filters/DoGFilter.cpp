@@ -8,20 +8,20 @@
 
 #include "DoGFilter.h"
 
-DoGFilter::DoGFilter(float width, float height, float black, float sigma, float sigma3, float tau, int halfWidth, int smoothPasses, float pencil) : AbstractFilter(width, height) {
+DoGFilter::DoGFilter(float width, float height, float black, float sigma, float sigma3, float tau, int halfWidth, int smoothPasses, ofVec2f sketchiness) : AbstractFilter(width, height) {
     _imageFbo.allocate(getWidth(), getHeight(), GL_RGBA32F_ARB);
     _edgeTangentFbo.allocate(getWidth(), getHeight(), GL_RGBA32F_ARB);
     _directionalFbo.allocate(getWidth(), getHeight(), GL_RGBA32F_ARB);
     
     _edgeTangentFilters = new FilterChain(getWidth(), getHeight(), "edgeTangentFilters", GL_RGBA32F_ARB);
     _edgeTangentFilters->addFilter(new EdgeTangentFilter(getWidth(), getHeight()));
-    
+
     for (int i=0; i<smoothPasses; i++) {
-        _edgeTangentFilters->addFilter(new EdgeTangentSmoothingFilter(getWidth(), getHeight(), ofVec2f(1.0, 1.0), halfWidth));
-        //_edgeTangentFilters->addFilter(new EdgeTangentSmoothingFilter(getWidth(), getHeight(), ofVec2f(1.0, 1.0), halfWidth));
+        _edgeTangentFilters->addFilter(new EdgeTangentSmoothingFilter(getWidth(), getHeight(), ofVec2f(1.0, 0.0), halfWidth));
+        _edgeTangentFilters->addFilter(new EdgeTangentSmoothingFilter(getWidth(), getHeight(), ofVec2f(0.0, 1.0), halfWidth));
     }
     
-    _directionalDoGFilter = new DirectionalDoGFilter(getWidth(), getHeight(), sigma, tau);
+    _directionalDoGFilter = new DirectionalDoGFilter(getWidth(), getHeight(), sigma, tau, sketchiness.x, sketchiness.y);
     _flowDoGFilter = new FlowDoGFilter(getWidth(), getHeight(), sigma3);
     _addParameter(new ParameterF("black", black));
     _setupShader();
@@ -44,6 +44,7 @@ void DoGFilter::end() {
     _imageFbo.draw(0,0);
     _edgeTangentFilters->end();
     _edgeTangentFbo.end();
+    
     
     _directionalDoGFilter->setSecondTexture(_edgeTangentFbo.getTextureReference());
     _directionalFbo.begin();
@@ -98,9 +99,7 @@ void DoGFilter::setHalfWidth(int halfWidth) {
         _edgeTangentFilters->getFilterAt(i)->updateParameter("halfWidth", halfWidth);
 }
 
-void DoGFilter::setPencil(float pencil) {
-    for (int i=1; i<_edgeTangentFilters->getNumFilters(); i++) {
-        ofVec2f v = (i % 2 == 1) ? ofVec2f(1.0, pencil) : ofVec2f(pencil, 1.0);
-        ((EdgeTangentSmoothingFilter*)_edgeTangentFilters->getFilterAt(i))->setOffset(v);
-    }
+void DoGFilter::setSketchiness(ofVec2f sketchiness) {
+    _directionalDoGFilter->updateParameter("sketchinessX", sketchiness.x);
+    _directionalDoGFilter->updateParameter("sketchinessY", sketchiness.y);
 }

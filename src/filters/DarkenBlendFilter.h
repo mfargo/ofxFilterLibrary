@@ -1,22 +1,24 @@
 //
-//  DarkenBlend.h
+//  DarkenBlendFilter.h
 //  ArtNouveau
 //
 //  Created by Matthew Fargo on 2014/07/27.
 //
 //
 
-#ifndef __ArtNouveau__DarkenBlend__
-#define __ArtNouveau__DarkenBlend__
+#ifndef __DarkenBlendFilter__
+#define __DarkenBlendFilter__
 
-#include "ofMain.h"
+#include "AbstractTwoInputFilter.h"
 
-class DarkenBlend {
+class DarkenBlendFilter : public AbstractTwoInputFilter {
 public:
-	DarkenBlend();
-	virtual ~DarkenBlend();
+	DarkenBlendFilter();
+	virtual ~DarkenBlendFilter();
 
-private:
+protected:
+    
+    virtual string _getFragSrc();
 };
 
-#endif /* defined(__ArtNouveau__DarkenBlend__) */
+#endif /* defined(__DarkenBlendFilter__) */

@@ -9,9 +9,11 @@
 #include "DirectionalDoGFilter.h"
 
 
-DirectionalDoGFilter::DirectionalDoGFilter(float width, float height, float sigma, float tau) : AbstractDoGFilter(width, height, sigma) {
+DirectionalDoGFilter::DirectionalDoGFilter(float width, float height, float sigma, float tau, float sketchinessX, float sketchinessY) : AbstractDoGFilter(width, height, sigma) {
     _addParameter(makeGaussianVector(sigma*1.6, "gau2"));
     _addParameter(new ParameterF("tau", tau));
+    _addParameter(new ParameterF("sketchinessX", sketchinessX));
+    _addParameter(new ParameterF("sketchinessY", sketchinessY));
     _setupShader();
 }
 DirectionalDoGFilter::~DirectionalDoGFilter() {}
@@ -28,6 +30,8 @@ string DirectionalDoGFilter::_getFragSrc() {
          uniform float tau;
          uniform float width;
          uniform float height;
+         uniform float sketchinessX;
+         uniform float sketchinessY;
          
          void main(){
              
@@ -41,15 +45,14 @@ string DirectionalDoGFilter::_getFragSrc() {
              float texelSizeHeight = 1.0/height;
           
              vec2 uv = gl_TexCoord[0].xy;
-             vec4 color = texture2D(inputImageTexture, uv );
 
              vec4 etf = texture2D(inputImageTexture2, uv);
 
-             vec2 vn = vec2(-etf.g, etf.r);
+             vec2 vn = vec2(-etf.g, etf.r) * vec2(sketchinessX, sketchinessY);
              
              if (vn.x == 0.0 && vn.y == 0.0) {
-                 sum1 = 254.0;
-                 sum2 = 254.0;
+                 sum1 = 255.0;
+                 sum2 = 255.0;
              }
              else {
                  float w_sum1 = 0.0;
@@ -61,9 +64,9 @@ string DirectionalDoGFilter::_getFragSrc() {
                      
                      vec4 c = texture2D(inputImageTexture, d);
                      
-                     float val = c.r*254.0;
+                     float val = c.r * 255.0;
                      
-                     int dd = s;
+                     int dd = s; //int(abs(float(s)));
                      if (dd < 0) dd *= -1;
                      
                      float weight1;

@@ -40,7 +40,7 @@ string FlowDoGFilter::_getFragSrc() {
                                      float texelSizeHeight = 1.0/height;
                                      
                                      vec2 uv = gl_TexCoord[0].xy;
-                                     vec4 color = texture2D(inputImageTexture, uv ) * 254;
+                                     vec4 color = texture2D(inputImageTexture, uv ) * 1.0001;
                                      vec4 etf = texture2D(inputImageTexture2, uv);
                                      
                                      float sum1 = 0.0;
@@ -67,6 +67,7 @@ string FlowDoGFilter::_getFragSrc() {
                                          if (d.x < 0.0 || d.x > 1.0 || d.y < 0.0 || d.y > 1.0) break;
                                      }
                                      
+                                     
                                      d = uv;
                                      for (int k=0; k<half_l; k++) {
                                          vec2 vt = etf.xy * -1.0;
@@ -85,6 +86,8 @@ string FlowDoGFilter::_getFragSrc() {
                                      sum1 /= w_sum1;
                                      float total = 1.0 + tanh(sum1);
                                      if (sum1 > 0) total = 1.0;
+                                     if (total < 0.0) total = 0.0;
+                                     if (total > 1.0) total = 1.0;
                                      else gl_FragColor = vec4(total, total, total, 1.0);
                                  }
                                  

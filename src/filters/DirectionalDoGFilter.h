@@ -13,7 +13,7 @@
 
 class DirectionalDoGFilter : public AbstractDoGFilter {
 public:
-	DirectionalDoGFilter(float width, float height, float sigma, float tau);
+	DirectionalDoGFilter(float width, float height, float sigma, float tau, float sketchinessX=1.0, float sketchinessY=1.0);
 	virtual ~DirectionalDoGFilter();
 
     

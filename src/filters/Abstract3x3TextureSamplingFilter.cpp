@@ -12,7 +12,6 @@ Abstract3x3TextureSamplingFilter::Abstract3x3TextureSamplingFilter(float width, 
     _texelSpacing = texelSpacing;
     _addParameter(new ParameterF("texelWidthOffset", _texelSpacing.x/getWidth()));
     _addParameter(new ParameterF("texelHeightOffset", _texelSpacing.y/getHeight()));
-    _setupShader();
 }
 Abstract3x3TextureSamplingFilter::~Abstract3x3TextureSamplingFilter() {}
 
@@ -35,8 +34,8 @@ string Abstract3x3TextureSamplingFilter::_getVertSrc() {
        varying vec2 bottomRightTextureCoordinate;
        
        void main(){
-           gl_TexCoord[0] = gl_MultiTexCoord0;
            gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+           gl_TexCoord[0] = gl_MultiTexCoord0;
            textureCoordinate = gl_TexCoord[0].xy;
            
            vec2 widthStep = vec2(texelWidthOffset, 0.0);

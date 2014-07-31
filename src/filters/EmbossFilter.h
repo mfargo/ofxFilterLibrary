@@ -9,9 +9,9 @@
 #ifndef __filterSandbox__EmbossFilter__
 #define __filterSandbox__EmbossFilter__
 
-#include "AbstractFilter.h"
+#include "Abstract3x3ConvolutionFilter.h"
 
-class EmbossFilter : public AbstractFilter {
+class EmbossFilter : public Abstract3x3ConvolutionFilter {
 public:
 	EmbossFilter(float width, float height, float intensity=1.f);
 	virtual ~EmbossFilter();
@@ -21,10 +21,9 @@ public:
   
 protected:
     virtual string  _getFragSrc();
-    virtual string  _getVertSrc();
+    //virtual string  _getVertSrc();
 
     
-    ofMatrix4x4     _matrix;
     float           _intensity;
 };
 

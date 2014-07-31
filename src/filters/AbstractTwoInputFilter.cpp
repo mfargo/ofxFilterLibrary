@@ -17,9 +17,6 @@ AbstractTwoInputFilter::~AbstractTwoInputFilter() {}
 
 string AbstractTwoInputFilter::_getVertSrc() {
     return GLSL_STRING(120,
-        attribute vec4 inputTextureCoordinate;
-        attribute vec4 inputTextureCoordinate2;
-        
         varying vec2 textureCoordinate;
         
         void main() {

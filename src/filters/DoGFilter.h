@@ -20,7 +20,7 @@
 
 class DoGFilter : public AbstractFilter {
 public:
-	DoGFilter(float width, float height, float black, float sigma, float sigma3, float tau, int halfWidth, int smoothPasses=2, float pencil = 0.f);
+	DoGFilter(float width, float height, float black, float sigma, float sigma3, float tau, int halfWidth, int smoothPasses=2, ofVec2f sketchiness=ofVec2f(1.0, 1.0));
 	virtual ~DoGFilter();
 
     virtual void    begin();
@@ -31,7 +31,7 @@ public:
     void            setSigma(float sigma);
     void            setSigma3(float sigma3);
     void            setHalfWidth(int halfWidth);
-    void            setPencil(float pencil);
+    void            setSketchiness(ofVec2f sketchiness);
     
 private:
     

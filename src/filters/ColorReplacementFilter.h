@@ -9,14 +9,16 @@
 #ifndef __ArtNouveau__ColorReplacementFilter__
 #define __ArtNouveau__ColorReplacementFilter__
 
-#include "ofMain.h"
+#include "AbstractFilter.h"
 
-class ColorReplacementFilter {
+class ColorReplacementFilter : public AbstractFilter {
 public:
-	ColorReplacementFilter();
+	ColorReplacementFilter(vector<ofVec3f> fromColors, vector<ofVec3f>toColors);
 	virtual ~ColorReplacementFilter();
 
-private:
+protected:
+    virtual string  _getFragSrc();
+    
 };
 
 #endif /* defined(__ArtNouveau__ColorReplacementFilter__) */

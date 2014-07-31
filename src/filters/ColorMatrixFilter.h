@@ -9,14 +9,17 @@
 #ifndef __ArtNouveau__ColorMatrixFilter__
 #define __ArtNouveau__ColorMatrixFilter__
 
-#include "ofMain.h"
+#include "AbstractFilter.h"
 
-class ColorMatrixFilter {
+class ColorMatrixFilter : AbstractFilter {
 public:
 	ColorMatrixFilter();
 	virtual ~ColorMatrixFilter();
 
-private:
+protected:
+    virtual string  _getFragSrc();
+
+    
 };
 
 #endif /* defined(__ArtNouveau__ColorMatrixFilter__) */

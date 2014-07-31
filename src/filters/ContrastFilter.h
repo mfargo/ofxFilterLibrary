@@ -1,22 +1,27 @@
 //
 //  ContrastFilter.h
-//  ArtNouveau
+//  ofxFilterLibraryExample
 //
 //  Created by Matthew Fargo on 2014/07/27.
 //
 //
 
-#ifndef __ArtNouveau__ContrastFilter__
-#define __ArtNouveau__ContrastFilter__
+#ifndef __ContrastFilter__
+#define __ContrastFilter__
 
-#include "ofMain.h"
+#include "AbstractFilter.h"
 
-class ContrastFilter {
+class ContrastFilter : public AbstractFilter {
 public:
-	ContrastFilter();
+	ContrastFilter(float contrast=1.0);
 	virtual ~ContrastFilter();
 
-private:
+    void    setContrast(float contrast);
+
+protected:
+    virtual string  _getFragSrc();
+    
+
 };
 
-#endif /* defined(__ArtNouveau__ContrastFilter__) */
+#endif /* defined(__ContrastFilter__) */

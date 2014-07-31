@@ -1,22 +1,27 @@
 //
 //  HueFilter.h
-//  ArtNouveau
+//  filterSandbox
 //
 //  Created by Matthew Fargo on 2014/07/27.
 //
 //
 
-#ifndef __ArtNouveau__HueFilter__
-#define __ArtNouveau__HueFilter__
+#ifndef __HueFilter__
+#define __HueFilter__
 
-#include "ofMain.h"
+#include "AbstractFilter.h"
 
-class HueFilter {
+class HueFilter : public AbstractFilter {
 public:
-	HueFilter();
+	HueFilter(float hue=90.0);
 	virtual ~HueFilter();
 
-private:
+    void    setHue(float hue);
+    
+protected:
+    
+    virtual string  _getFragSrc();
+
 };
 
-#endif /* defined(__ArtNouveau__HueFilter__) */
+#endif /* defined(__HueFilter__) */

@@ -1,22 +1,26 @@
 //
 //  SaturationFilter.h
-//  ArtNouveau
+//  ofxFilterLibraryExample
 //
 //  Created by Matthew Fargo on 2014/07/27.
 //
 //
 
-#ifndef __ArtNouveau__SaturationFilter__
-#define __ArtNouveau__SaturationFilter__
+#ifndef __SaturationFilter__
+#define __SaturationFilter__
 
-#include "ofMain.h"
+#include "AbstractFilter.h"
 
-class SaturationFilter {
+class SaturationFilter : public AbstractFilter {
 public:
-	SaturationFilter();
+	SaturationFilter(float saturation);
 	virtual ~SaturationFilter();
 
-private:
+    void    setSaturation(float saturation);
+    
+protected:
+    
+    virtual string  _getFragSrc();
 };
 
-#endif /* defined(__ArtNouveau__SaturationFilter__) */
+#endif /* defined(__SaturationFilter__) */
