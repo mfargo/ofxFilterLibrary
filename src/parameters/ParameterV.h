@@ -22,6 +22,7 @@ public:
     
     float *     getValue() { return _value; }
     void        setValue(float * value) { _value = value; }
+    void        setFloatAt(int index, float val) { _value[index] = val; }
     int         getNumValues() { return _numValues; }
     
     

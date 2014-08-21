@@ -16,7 +16,7 @@ public:
 	MultiplyBlendFilter();
 	virtual ~MultiplyBlendFilter();
 
-private:
+protected:
     virtual string  _getFragSrc();
 
 };

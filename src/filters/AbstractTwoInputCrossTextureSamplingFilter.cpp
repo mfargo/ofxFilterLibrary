@@ -8,6 +8,12 @@
 
 #include "AbstractTwoInputCrossTextureSamplingFilter.h"
 
+AbstractTwoInputCrossTextureSamplingFilter::AbstractTwoInputCrossTextureSamplingFilter(string secondTextureUri, ofVec2f texelSpacing) : AbstractTwoInputFilter(secondTextureUri) {
+    _texelSpacing = texelSpacing;
+    _addParameter(new ParameterF("texelWidth", _texelSpacing.x/getWidth()));
+    _addParameter(new ParameterF("texelHeight", _texelSpacing.y/getHeight()));
+}
+
 AbstractTwoInputCrossTextureSamplingFilter::AbstractTwoInputCrossTextureSamplingFilter(float width, float height, ofVec2f texelSpacing) : AbstractTwoInputFilter(width, height) {
     _texelSpacing = texelSpacing;
     _addParameter(new ParameterF("texelWidth", _texelSpacing.x/getWidth()));

@@ -7,6 +7,15 @@
 //
 
 #include "AbstractTwoInputFilter.h"
+AbstractTwoInputFilter::AbstractTwoInputFilter() : AbstractFilter() {
+    _addParameter(new ParameterT("inputImageTexture2", _secondTexture, 1));
+}
+AbstractTwoInputFilter::AbstractTwoInputFilter(string secondTextureUri) : AbstractFilter() {
+    ofLoadImage(_secondTexture, secondTextureUri);
+    setWidth(_secondTexture.getWidth());
+    setHeight(_secondTexture.getHeight());
+    _addParameter(new ParameterT("inputImageTexture2", _secondTexture, 1));
+}
 
 AbstractTwoInputFilter::AbstractTwoInputFilter(float width, float height) : AbstractFilter(width, height) {
     _secondTexture.allocate(getWidth(), getHeight(), GL_RGB16);

@@ -13,6 +13,7 @@
 
 class AbstractTwoInputCrossTextureSamplingFilter : public AbstractTwoInputFilter {
 public:
+	AbstractTwoInputCrossTextureSamplingFilter(string secondTextureUri, ofVec2f texelSpacing);
 	AbstractTwoInputCrossTextureSamplingFilter(float width, float height, ofVec2f texelSpacing);
 	virtual ~AbstractTwoInputCrossTextureSamplingFilter();
 

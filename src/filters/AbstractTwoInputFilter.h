@@ -13,6 +13,8 @@
 
 class AbstractTwoInputFilter : public AbstractFilter {
 public:
+    AbstractTwoInputFilter();
+	AbstractTwoInputFilter(string secondTextureUrl);
 	AbstractTwoInputFilter(float width, float height);
 	virtual ~AbstractTwoInputFilter();
     
