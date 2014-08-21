@@ -6,8 +6,6 @@ void ofApp::setup(){
     _currentFilter = 0;
     
     
-    
-    _filters.push_back(new DoGFilter(_video.getWidth(), _video.getHeight(), 11, 1.7, 8.5, 0.983, 4, 4));
     _filters.push_back(new KuwaharaFilter());
     _filters.push_back(new SobelEdgeDetectionFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new BilateralFilter(_video.getWidth(), _video.getHeight()));
@@ -35,9 +33,9 @@ void ofApp::setup(){
     _filters.push_back(new LowPassFilter(_video.getWidth(), _video.getHeight(), 0.9));
     _filters.push_back(new DisplacementFilter("img/mandel.jpg", _video.getWidth(), _video.getHeight(), 25.f));
     _filters.push_back(new PoissonBlendFilter("img/wes.jpg", _video.getWidth(), _video.getHeight(), 2.0));
-
+    _filters.push_back(new DisplacementFilter("img/glass/3.jpg", _video.getWidth(), _video.getHeight(), 40.0));
     
-        // and here's how you might daisy-chain a bunch of filters
+    // and here's how you might daisy-chain a bunch of filters
     
     FilterChain * foggyTexturedGlassChain = new FilterChain(_video.getWidth(), _video.getHeight(), "Weird Glass");
     foggyTexturedGlassChain->addFilter(new PerlinPixellationFilter(_video.getWidth(), _video.getHeight(), 13.f));
@@ -45,6 +43,9 @@ void ofApp::setup(){
     foggyTexturedGlassChain->addFilter(new GaussianBlurFilter(_video.getWidth(), _video.getHeight(), 3.f));
     _filters.push_back(foggyTexturedGlassChain);
     
+    
+
+
         // here's another unimaginative filter chain
     
     FilterChain * watercolorChain = new FilterChain(_video.getWidth(), _video.getHeight(), "Monet");
