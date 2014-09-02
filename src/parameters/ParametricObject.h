@@ -27,15 +27,15 @@ public:
 	virtual ~ParametricObject();
 
     template<class T>
-    AbstractParameter * updateParameter(string name, T value) { _parameters[name]->setValue(value); }
-    AbstractParameter * updateParameter(string name, float value) { ((ParameterF *)_parameters[name])->setValue(value); }
-    AbstractParameter * updateParameter(string name, int value) { ((ParameterI *)_parameters[name])->setValue(value); }
-    AbstractParameter * updateParameter(string name, ofVec2f value) { ((Parameter2f *)_parameters[name])->setValue(value); }
-    AbstractParameter * updateParameter(string name, ofVec3f value) { ((Parameter3f *)_parameters[name])->setValue(value); }
-    AbstractParameter * updateParameter(string name, ofVec4f value) { ((Parameter4f *)_parameters[name])->setValue(value); }
-    AbstractParameter * updateParameter(string name, ofMatrix4x4 value) { ((ParameterMatrix4f *)_parameters[name])->setValue(value); }
-    AbstractParameter * updateParameter(string name, ofTexture value) { ((ParameterT *)_parameters[name])->setValue(value); }
-    AbstractParameter * updateParameter(string name, float * value) { ((ParameterV *)_parameters[name])->setValue(value); }
+    void updateParameter(string name, T value) { _parameters[name]->setValue(value); }
+    void updateParameter(string name, float value) { ((ParameterF *)_parameters[name])->setValue(value); }
+    void updateParameter(string name, int value) { ((ParameterI *)_parameters[name])->setValue(value); }
+    void updateParameter(string name, ofVec2f value) { ((Parameter2f *)_parameters[name])->setValue(value); }
+    void updateParameter(string name, ofVec3f value) { ((Parameter3f *)_parameters[name])->setValue(value); }
+    void updateParameter(string name, ofVec4f value) { ((Parameter4f *)_parameters[name])->setValue(value); }
+    void updateParameter(string name, ofMatrix4x4 value) { ((ParameterMatrix4f *)_parameters[name])->setValue(value); }
+    void updateParameter(string name, ofTexture value) { ((ParameterT *)_parameters[name])->setValue(value); }
+    void updateParameter(string name, float * value) { ((ParameterV *)_parameters[name])->setValue(value); }
     AbstractParameter * getParameter(string name) { return _parameters[name]; }
     
     // utility

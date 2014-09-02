@@ -8,6 +8,10 @@
 
 #include "HueFilter.h"
 
+#ifdef WIN32
+#define M_PI 3.141592654
+#endif
+
 inline float getHueRadians(float hue) {
     return fmodf(hue, 360.0) * M_PI/180;
 }

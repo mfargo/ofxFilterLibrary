@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DoGExample</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxFilterLibrary\libs;..\..\..\addons\ofxFilterLibrary\src;..\..\..\addons\ofxFilterLibrary\src\filters;..\..\..\addons\ofxFilterLibrary\src\parameters</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxFilterLibrary\libs;..\..\..\addons\ofxFilterLibrary\src;..\..\..\addons\ofxFilterLibrary\src\filters;..\..\..\addons\ofxFilterLibrary\src\parameters</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\LineDrawingAlphaFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3ConvolutionFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3PingPongFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3TextureSamplingFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractDoGFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractPingPongRenderer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractTwoInputCrossTextureSamplingFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractTwoInputFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AverageColorFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\BilateralFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\BrightnessFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\CGAColorspaceFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorBlendFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorBurnFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorMatrixFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorPackingFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorReplacementFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ContrastFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\CornerDetectionFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DarkenBlendFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DilationFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DirectionalDoGFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DisplacementFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DissolveBlendFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DoGFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\EdgeTangentFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\EdgeTangentSmoothingFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\EmbossFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ErosionFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\FilterChain.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\FlowDoGFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\GaussianBlurFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\GradientMapFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\GrayscaleFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\HarrisCornerDetectionFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\HueFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\KuwaharaFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\LaplacianFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\LookupFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\LowPassFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\MotionDetectionFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\MultiplyBlendFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\NormalBlendFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\PerlinPixellationFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\PixelateFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\PoissonBlendFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\PosterizeFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\SaturationFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\SketchFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\SmoothToonFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\SobelEdgeDetectionFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ThresholdedNonMaximumSuppressionFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\TiltShiftFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ToonFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\VignetteFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\VoronoiFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\XYDerivativeFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ZoomBlurFilter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParametricObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\LineDrawingAlphaFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3ConvolutionFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3PingPongFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3TextureSamplingFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractDoGFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractPingPongRenderer.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractTwoInputCrossTextureSamplingFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractTwoInputFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AverageColorFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\BilateralFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\BrightnessFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\CGAColorspaceFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorBlendFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorBurnFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorMatrixFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorPackingFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorReplacementFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ContrastFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\CornerDetectionFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DarkenBlendFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DilationFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DirectionalDoGFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DisplacementFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DissolveBlendFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DoGFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\EdgeTangentFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\EdgeTangentSmoothingFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\EmbossFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ErosionFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\FilterChain.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\FlowDoGFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\GaussianBlurFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\GradientMapFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\GrayscaleFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\HarrisCornerDetectionFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\HueFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\KuwaharaFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\LaplacianFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\LookupFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\LowPassFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\MotionDetectionFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\MultiplyBlendFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\NormalBlendFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\PerlinPixellationFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\PixelateFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\PoissonBlendFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\PosterizeFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\SaturationFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\SketchFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\SmoothToonFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\SobelEdgeDetectionFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ThresholdedNonMaximumSuppressionFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\TiltShiftFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ToonFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\VignetteFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\VoronoiFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\XYDerivativeFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ZoomBlurFilter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\ofxFilterLibrary.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\AbstractParameter.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\Parameter2f.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\Parameter2fv.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\Parameter3f.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\Parameter3fv.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\Parameter4f.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParameterF.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParameterI.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParameterMatrix4f.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParameterT.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParameterV.h" />
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParametricObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
