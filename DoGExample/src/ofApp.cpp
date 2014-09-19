@@ -9,6 +9,7 @@ void ofApp::setup(){
     
     _alphaFilter = new LineDrawingAlphaFilter();
     _dogFilter = new DoGFilter(_video.getWidth(), _video.getHeight(), 11, 1.7, 8.5, 0.973, 4);
+    _sketchDogFilter = new SketchDoGFilter(_video.getWidth(), _video.getHeight(), 11, 1.7, 8.5, 0.973, 4);
     setMode(DOG_MODE_ANIME);
     _dogFbo.allocate(_video.getWidth(), _video.getHeight());
 }
@@ -35,9 +36,11 @@ void ofApp::draw(){
     
     _dogFbo.begin();
     //ofClear(255);
-    _dogFilter->begin();
+    if (_mode==DOG_MODE_ANIME) _dogFilter->begin();
+    else _sketchDogFilter->begin();
     _video.draw(0, 0);
-    _dogFilter->end();
+    if (_mode==DOG_MODE_ANIME) _dogFilter->end();
+    else _sketchDogFilter->end();
     _dogFbo.end();
 
     _alphaFilter->begin();
@@ -61,12 +64,12 @@ void ofApp::setMode(DogMode mode) {
             break;
         case DOG_MODE_TAKE_ON_ME:
             
-            _dogFilter->setBlack(56);
-            _dogFilter->setSigma(1.36);
-            _dogFilter->setSigma3(0.01);
-            _dogFilter->setTau(0.897);
-            _dogFilter->setHalfWidth(4);
-            _dogFilter->setSketchiness(ofVec2f(5.3, 0.0));
+            _sketchDogFilter->setBlack(56);
+            _sketchDogFilter->setSigma(1.36);
+            _sketchDogFilter->setSigma3(0.01);
+            _sketchDogFilter->setTau(0.897);
+            _sketchDogFilter->setHalfWidth(4);
+            _sketchDogFilter->setSketchiness(ofVec2f(5.3, 0.0));
                                  
             break;
             

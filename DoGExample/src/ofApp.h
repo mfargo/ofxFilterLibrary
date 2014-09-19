@@ -13,7 +13,8 @@
 
 #include "ofxFilterLibrary.h"
 #include "LineDrawingAlphaFilter.h"
-#include "DoGFilter.h"
+#include "SketchDoGFilter.h"
+
 
 typedef enum {
     DOG_MODE_ANIME,
@@ -38,5 +39,6 @@ class ofApp : public ofBaseApp{
         LineDrawingAlphaFilter *    _alphaFilter;
         ofFbo                       _dogFbo;
         DoGFilter *                 _dogFilter;
+        SketchDoGFilter *           _sketchDogFilter;
 
 };
