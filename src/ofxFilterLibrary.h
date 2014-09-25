@@ -38,6 +38,7 @@
 #include "SaturationFilter.h"
 #include "HueFilter.h"
 #include "ContrastFilter.h"
+#include "AlphaBlendFilter.h"
 #include "NormalBlendFilter.h"
 #include "DarkenBlendFilter.h"
 #include "ColorBlendFilter.h"
@@ -48,7 +49,6 @@
 #include "GradientMapFilter.h"
 #include "DisplacementFilter.h"
 #include "DoGFilter.h"
-
 #include "FilterChain.h"
 
 
