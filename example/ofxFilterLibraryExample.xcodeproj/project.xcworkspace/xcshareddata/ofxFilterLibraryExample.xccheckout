@@ -10,29 +10,29 @@
 	<string>ofxFilterLibraryExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>267D1B3C-5708-4544-8591-653FFCB5D8CF</key>
+		<key>2FD5A69EE360795D0E5BEC83F98FCBF703291CA3</key>
 		<string>https://github.com/mfargo/ofxFilterLibrary.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>example/ofxFilterLibraryExample.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>267D1B3C-5708-4544-8591-653FFCB5D8CF</key>
+		<key>2FD5A69EE360795D0E5BEC83F98FCBF703291CA3</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/mfargo/ofxFilterLibrary.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>267D1B3C-5708-4544-8591-653FFCB5D8CF</string>
+	<string>2FD5A69EE360795D0E5BEC83F98FCBF703291CA3</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>267D1B3C-5708-4544-8591-653FFCB5D8CF</string>
+			<string>2FD5A69EE360795D0E5BEC83F98FCBF703291CA3</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxFilterLibrary</string>
 		</dict>

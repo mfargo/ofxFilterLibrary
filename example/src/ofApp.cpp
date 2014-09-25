@@ -4,7 +4,9 @@ void ofApp::setup(){
     ofDisableArbTex();
     _video.initGrabber(1280, 720);
     _currentFilter = 0;
+
     
+        // Basic filter examples
     
     _filters.push_back(new KuwaharaFilter());
     _filters.push_back(new SobelEdgeDetectionFilter(_video.getWidth(), _video.getHeight()));
@@ -18,7 +20,7 @@ void ofApp::setup(){
     _filters.push_back(new SmoothToonFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new TiltShiftFilter(_video.getTextureReference()));
     _filters.push_back(new VoronoiFilter(_video.getTextureReference()));    
-    _filters.push_back(new DoGFilter(_video.getWidth(), _video.getHeight(), 56, 1.36, 0.01, 0.987, 4, 0, ofVec2f(3.3, 0.0)));
+    _filters.push_back(new DoGFilter(_video.getWidth(), _video.getHeight(), 11, 1.61, 5.01, 0.977, 8));
     _filters.push_back(new CGAColorspaceFilter());
     _filters.push_back(new ErosionFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new LookupFilter(_video.getWidth(), _video.getHeight(), "img/lookup_amatorka.png"));
@@ -34,16 +36,30 @@ void ofApp::setup(){
     _filters.push_back(new DisplacementFilter("img/mandel.jpg", _video.getWidth(), _video.getHeight(), 25.f));
     _filters.push_back(new PoissonBlendFilter("img/wes.jpg", _video.getWidth(), _video.getHeight(), 2.0));
     _filters.push_back(new DisplacementFilter("img/glass/3.jpg", _video.getWidth(), _video.getHeight(), 40.0));
+
     
-    // and here's how you might daisy-chain a bunch of filters
+        // here's how you use Convolution filters
+    
+    Abstract3x3ConvolutionFilter * convolutionFilter1 = new Abstract3x3ConvolutionFilter(_video.getWidth(), _video.getHeight());
+    convolutionFilter1->setMatrix(-1, 0, 1, -2, 0, 2, -1, 0, 1);
+    _filters.push_back(convolutionFilter1);
+    
+    Abstract3x3ConvolutionFilter * convolutionFilter2 = new Abstract3x3ConvolutionFilter(_video.getWidth(), _video.getHeight());
+    convolutionFilter2->setMatrix(4, 4, 4, 4, -32, 4, 4,  4, 4);
+    _filters.push_back(convolutionFilter2);
+    
+    Abstract3x3ConvolutionFilter * convolutionFilter3 = new Abstract3x3ConvolutionFilter(_video.getWidth(), _video.getHeight());
+    convolutionFilter3->setMatrix(1.2,  1.2, 1.2, 1.2, -9.0, 1.2, 1.2,  1.2, 1.2);
+    _filters.push_back(convolutionFilter3);
+    
+    
+        // and here's how you might daisy-chain a bunch of filters
     
     FilterChain * foggyTexturedGlassChain = new FilterChain(_video.getWidth(), _video.getHeight(), "Weird Glass");
     foggyTexturedGlassChain->addFilter(new PerlinPixellationFilter(_video.getWidth(), _video.getHeight(), 13.f));
     foggyTexturedGlassChain->addFilter(new EmbossFilter(_video.getWidth(), _video.getHeight(), 0.5));
     foggyTexturedGlassChain->addFilter(new GaussianBlurFilter(_video.getWidth(), _video.getHeight(), 3.f));
     _filters.push_back(foggyTexturedGlassChain);
-    
-    
 
 
         // here's another unimaginative filter chain
@@ -55,6 +71,7 @@ void ofApp::setup(){
     watercolorChain->addFilter(new PoissonBlendFilter("img/canvas_texture.jpg", _video.getWidth(), _video.getHeight(), 2.0));
     watercolorChain->addFilter(new VignetteFilter());
     _filters.push_back(watercolorChain);
+    
     
         // and here's a random gradient map for posterity
     
