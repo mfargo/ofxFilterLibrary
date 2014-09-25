@@ -33,7 +33,7 @@ public:
     void            setHalfWidth(int halfWidth);
     void            setSketchiness(ofVec2f sketchiness);
     
-private:
+protected:
     
     
     virtual string  _getFragSrc();

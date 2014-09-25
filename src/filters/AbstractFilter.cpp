@@ -18,7 +18,7 @@ void AbstractFilter::_setupShader() {
     if (_shader.isLoaded()) _shader.unload();
     _shader.setupShaderFromSource(GL_VERTEX_SHADER, _getVertSrc());
     _shader.setupShaderFromSource(GL_FRAGMENT_SHADER, _getFragSrc());
-    _shader.linkProgram();
+    _shader.linkProgram();    
 }
 
 void AbstractFilter::begin() {

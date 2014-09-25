@@ -9,6 +9,7 @@
 #include "DoGFilter.h"
 
 DoGFilter::DoGFilter(float width, float height, float black, float sigma, float sigma3, float tau, int halfWidth, int smoothPasses, ofVec2f sketchiness) : AbstractFilter(width, height) {
+    _name = "Difference of Gradient";
     _imageFbo.allocate(getWidth(), getHeight(), GL_RGBA32F_ARB);
     _edgeTangentFbo.allocate(getWidth(), getHeight(), GL_RGBA32F_ARB);
     _directionalFbo.allocate(getWidth(), getHeight(), GL_RGBA32F_ARB);

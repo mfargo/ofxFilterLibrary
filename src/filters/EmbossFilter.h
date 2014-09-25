@@ -20,9 +20,6 @@ public:
     void            setIntensity(float intensity);
   
 protected:
-    virtual string  _getFragSrc();
-    //virtual string  _getVertSrc();
-
     
     float           _intensity;
 };

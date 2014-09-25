@@ -19,7 +19,7 @@ public:
     void            ping();
     void            pong();
     
-    ofTexture &     getTextureReference() { return _pong.getTextureReference(); }
+    virtual ofTexture &     getTextureReference() { return _pong.getTextureReference(); }
 
 protected:
     

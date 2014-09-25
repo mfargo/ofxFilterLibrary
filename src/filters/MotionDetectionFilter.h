@@ -13,7 +13,7 @@
 
 class MotionDetectionFilter : public AbstractTwoInputFilter {
 public:
-	MotionDetectionFilter(ofTexture & texture, float intensity=0.5f);
+	MotionDetectionFilter(ofTexture & texture, float intensity=0.5f, bool showImage=true);
 	virtual ~MotionDetectionFilter();
 
     

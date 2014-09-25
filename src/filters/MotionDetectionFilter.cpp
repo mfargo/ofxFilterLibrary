@@ -8,12 +8,13 @@
 
 #include "MotionDetectionFilter.h"
 
-MotionDetectionFilter::MotionDetectionFilter(ofTexture & texture, float intensity) : AbstractTwoInputFilter(texture.getWidth(), texture.getHeight()) {
+MotionDetectionFilter::MotionDetectionFilter(ofTexture & texture, float intensity, bool showImage) : AbstractTwoInputFilter(texture.getWidth(), texture.getHeight()) {
     _name = "Motion Detection";
     _texture = texture;
     _lowPassFilter = new LowPassFilter(getWidth(), getHeight(), 0.6);
     setSecondTexture(_lowPassFilter->getTextureReference());
     _addParameter(new ParameterF("intensity", intensity));
+    _addParameter(new ParameterF("showImage", (float)showImage));
     _setupShader();
 }
 MotionDetectionFilter::~MotionDetectionFilter() {}
@@ -39,6 +40,7 @@ string MotionDetectionFilter::_getFragSrc() {
         uniform sampler2D inputImageTexture2;
         
         uniform float intensity;
+        uniform float showImage;
         
         void main()
         {
@@ -48,7 +50,11 @@ string MotionDetectionFilter::_getFragSrc() {
             float colorDistance = distance(currentImageColor, lowPassImageColor); // * 0.57735
             float movementThreshold = step(0.2, colorDistance);
             
-            gl_FragColor = movementThreshold * vec4(textureCoordinate.x, textureCoordinate.y, 1.0, 1.0);
+            if (showImage>0.5)
+                gl_FragColor = movementThreshold * vec4(textureCoordinate.x, textureCoordinate.y, 1.0, 1.0);
+            else
+                gl_FragColor = vec4(movementThreshold, movementThreshold, movementThreshold, 1.0);
+            //gl_FragColor = vec4(movementThreshold, movementThreshold, movementThreshold, 1.0);
         }
     );
 }

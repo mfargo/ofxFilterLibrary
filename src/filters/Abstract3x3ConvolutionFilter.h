@@ -13,11 +13,12 @@
 
 class Abstract3x3ConvolutionFilter : public Abstract3x3TextureSamplingFilter{
 public:
-	Abstract3x3ConvolutionFilter(float width, float height, ofVec2f texelSpacing);
+	Abstract3x3ConvolutionFilter(float width, float height, ofVec2f texelSpacing=ofVec2f(1,1));
 	virtual ~Abstract3x3ConvolutionFilter();
 
-protected:
+    void            setMatrix(float a=0.0, float b=0.0, float c=0.0, float d=0.0, float e=0.0, float f=0.0, float g=0.0, float h=0.0, float i=0.0);
     
+protected:
     virtual string  _getFragSrc();
     
     ofMatrix4x4     _matrix;

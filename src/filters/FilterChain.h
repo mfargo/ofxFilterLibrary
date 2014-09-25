@@ -24,6 +24,9 @@ public:
     AbstractFilter *getFilterAt(int index) { return _filters[index]; }
     int             getNumFilters() { return _filters.size(); }
 
+    virtual ofTexture &     getTextureReference();
+    virtual void            readToPixels(ofPixels & pixels);
+    
 protected:
     
     vector<AbstractFilter *>    _filters;

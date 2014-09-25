@@ -45,3 +45,13 @@ void FilterChain::end() {
     else _pong.draw(0,0);
     
 }
+
+ofTexture & FilterChain::getTextureReference() {
+    if (_filters.size()%2==1) return _ping.getTextureReference();
+    else _pong.getTextureReference();
+}
+
+void FilterChain::readToPixels(ofPixels & pixels) {
+    if (_filters.size()%2==1) _ping.readToPixels(pixels);
+    else _pong.readToPixels(pixels);
+}
