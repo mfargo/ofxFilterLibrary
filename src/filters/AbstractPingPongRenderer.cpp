@@ -23,6 +23,7 @@ void AbstractPingPongRenderer::ping() {
 void AbstractPingPongRenderer::pong() {
     _ping.end();
     _pong.begin();
+    ofClear(0, 0, 0, 0);
     _ping.draw(0, 0);
     _pong.end();
 }
