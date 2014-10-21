@@ -13,7 +13,7 @@
 
 class AlphaBlendFilter : public AbstractTwoInputFilter {
 public:
-    AlphaBlendFilter(float mixturePercent=1.f);
+    AlphaBlendFilter(float mixturePercent=0.5f);
     virtual ~AlphaBlendFilter();
     
 protected:

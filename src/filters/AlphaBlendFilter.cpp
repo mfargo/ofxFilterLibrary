@@ -10,7 +10,7 @@
 
 AlphaBlendFilter::AlphaBlendFilter(float mixturePercent) : AbstractTwoInputFilter() {
     _setupShader();
-    _addParameter(new ParameterF("mixturePercent", 1.f));
+    _addParameter(new ParameterF("mixturePercent", mixturePercent));
 }
 AlphaBlendFilter::~AlphaBlendFilter() {}
 

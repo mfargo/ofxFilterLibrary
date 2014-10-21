@@ -18,8 +18,8 @@ DoGFilter::DoGFilter(float width, float height, float black, float sigma, float 
     _edgeTangentFilters->addFilter(new EdgeTangentFilter(getWidth(), getHeight()));
 
     for (int i=0; i<smoothPasses; i++) {
-        _edgeTangentFilters->addFilter(new EdgeTangentSmoothingFilter(getWidth(), getHeight(), ofVec2f(1.0, 0.0), halfWidth));
-        _edgeTangentFilters->addFilter(new EdgeTangentSmoothingFilter(getWidth(), getHeight(), ofVec2f(0.0, 1.0), halfWidth));
+        _edgeTangentFilters->addFilter(new EdgeTangentSmoothingFilter(getWidth(), getHeight(), ofVec2f(2.0, 0.0), halfWidth));
+        _edgeTangentFilters->addFilter(new EdgeTangentSmoothingFilter(getWidth(), getHeight(), ofVec2f(0.0, 2.0), halfWidth));
     }
     
     _directionalDoGFilter = new DirectionalDoGFilter(getWidth(), getHeight(), sigma, tau, sketchiness.x, sketchiness.y);
