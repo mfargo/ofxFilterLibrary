@@ -13,6 +13,15 @@ DoGFilter::DoGFilter(float width, float height, float black, float sigma, float 
     _imageFbo.allocate(getWidth(), getHeight(), GL_RGBA32F_ARB);
     _edgeTangentFbo.allocate(getWidth(), getHeight(), GL_RGBA32F_ARB);
     _directionalFbo.allocate(getWidth(), getHeight(), GL_RGBA32F_ARB);
+    _imageFbo.begin();
+    ofClear(0, 0, 0, 0);
+    _imageFbo.end();
+    _edgeTangentFbo.begin();
+    ofClear(0, 0, 0, 0);
+    _edgeTangentFbo.end();
+    _directionalFbo.begin();
+    ofClear(0, 0, 0, 0);
+    _directionalFbo.end();
     
     _edgeTangentFilters = new FilterChain(getWidth(), getHeight(), "edgeTangentFilters", GL_RGBA32F_ARB);
     _edgeTangentFilters->addFilter(new EdgeTangentFilter(getWidth(), getHeight()));
