@@ -2,13 +2,23 @@
 
 void ofApp::setup(){
     ofDisableArbTex();
+    ofEnableSmoothing();
+    ofEnableAlphaBlending();
     _video.initGrabber(1280, 720);
     _currentFilter = 0;
 
     
-        // Basic filter examples
+    // here's a simple filter chain
     
-    _filters.push_back(new KuwaharaFilter());
+    FilterChain * charcoal = new FilterChain(_video.getWidth(), _video.getHeight(), "Charcoal");
+    //charcoal->addFilter(new BilateralFilter(_video.getWidth(), _video.getHeight(), 4, 4));
+    charcoal->addFilter(new GaussianBlurFilter(_video.getWidth(), _video.getHeight(), 2.f ));
+    charcoal->addFilter(new DoGFilter(_video.getWidth(), _video.getHeight(), 12, 1.2, 8, 0.99, 4));
+    _filters.push_back(charcoal);
+    
+        // Basic filter examples
+
+    _filters.push_back(new KuwaharaFilter(6));
     _filters.push_back(new SobelEdgeDetectionFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new BilateralFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new SketchFilter(_video.getWidth(), _video.getHeight()));
@@ -20,7 +30,6 @@ void ofApp::setup(){
     _filters.push_back(new SmoothToonFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new TiltShiftFilter(_video.getTextureReference()));
     _filters.push_back(new VoronoiFilter(_video.getTextureReference()));    
-    _filters.push_back(new DoGFilter(_video.getWidth(), _video.getHeight(), 11, 1.61, 5.01, 0.977, 8));
     _filters.push_back(new CGAColorspaceFilter());
     _filters.push_back(new ErosionFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new LookupFilter(_video.getWidth(), _video.getHeight(), "img/lookup_amatorka.png"));
@@ -33,9 +42,15 @@ void ofApp::setup(){
     _filters.push_back(new HarrisCornerDetectionFilter(_video.getTextureReference()));
     _filters.push_back(new MotionDetectionFilter(_video.getTextureReference()));
     _filters.push_back(new LowPassFilter(_video.getWidth(), _video.getHeight(), 0.9));
+    
+        // blending examples
+    
+    ofImage wes = ofImage("img/wes.jpg");
     _filters.push_back(new DisplacementFilter("img/mandel.jpg", _video.getWidth(), _video.getHeight(), 25.f));
-    _filters.push_back(new PoissonBlendFilter("img/wes.jpg", _video.getWidth(), _video.getHeight(), 2.0));
+    _filters.push_back(new PoissonBlendFilter(wes.getTextureReference(), _video.getWidth(), _video.getHeight(), 2.0));
     _filters.push_back(new DisplacementFilter("img/glass/3.jpg", _video.getWidth(), _video.getHeight(), 40.0));
+    _filters.push_back(new ExclusionBlendFilter(wes.getTextureReference()));
+
 
     
         // here's how you use Convolution filters
@@ -80,7 +95,7 @@ void ofApp::setup(){
         colors.push_back( GradientMapColorPoint(ofRandomuf(),ofRandomuf(),ofRandomuf(),percent) );
     _filters.push_back(new GradientMapFilter(colors));
 
-    
+
 }
 
 void ofApp::update(){

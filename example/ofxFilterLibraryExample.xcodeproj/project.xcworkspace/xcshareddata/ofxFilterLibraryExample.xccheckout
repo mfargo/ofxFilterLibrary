@@ -14,7 +14,7 @@
 		<string>https://github.com/mfargo/ofxFilterLibrary.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>example/ofxFilterLibraryExample.xcodeproj/project.xcworkspace</string>
+	<string>example/ofxFilterLibraryExample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>2FD5A69EE360795D0E5BEC83F98FCBF703291CA3</key>

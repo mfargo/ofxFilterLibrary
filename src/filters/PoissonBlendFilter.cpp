@@ -15,7 +15,12 @@ PoissonBlendFilter::PoissonBlendFilter(string blendImageUri, float width, float 
     _addParameter(new ParameterF("mixturePercent", mix));
     _setupShader();
 }
-
+PoissonBlendFilter::PoissonBlendFilter(ofTexture & texture, float width, float height, float mix, int numIterations) : AbstractTwoInputCrossTextureSamplingFilter(width, height, ofVec2f(1,1)) {
+    _name = "Poisson Blend";
+    setSecondTexture(texture);
+    _addParameter(new ParameterF("mixturePercent", mix));
+    _setupShader();
+}
 PoissonBlendFilter::PoissonBlendFilter(float width, float height, float mix, int numIterations) : AbstractTwoInputCrossTextureSamplingFilter(width, height, ofVec2f(1,1)) {
     _name = "Poisson Blend";
     _addParameter(new ParameterF("mixturePercent", mix));

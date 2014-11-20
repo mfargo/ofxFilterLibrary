@@ -44,8 +44,6 @@ string ZoomBlurFilter::_getFragSrc() {
     );
 }
 
-void ZoomBlurFilter::begin() {
-    updateParameter("blurCenter", ofVec2f((float)ofGetMouseX()/ofGetWidth(), (float)ofGetMouseY()/ofGetHeight()));
-    _shader.begin();
-    _updateParameters(&_shader);
+void ZoomBlurFilter::setBlurCenter(ofVec2f center) {
+    updateParameter("blurCenter", center);
 }

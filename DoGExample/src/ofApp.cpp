@@ -3,7 +3,7 @@
 void ofApp::setup(){
     ofDisableArbTex();
     _video.initGrabber(1280, 720);
-    _filters = new FilterChain(_video.getWidth(), _video.getHeight(), "Suisaiga");
+    _filters = new FilterChain(_video.getWidth(), _video.getHeight(), "Dog with Kuwahara and Bilateral");
     _filters->addFilter(new KuwaharaFilter(6)); //9
     _filters->addFilter(new BilateralFilter(_video.getWidth(), _video.getHeight(), 6.f, 4.f));
     
@@ -57,7 +57,7 @@ void ofApp::setMode(DogMode mode) {
             _dogFilter->setBlack(11);
             _dogFilter->setSigma(1.7);
             _dogFilter->setSigma3(8.5);
-            _dogFilter->setTau(0.973);
+            _dogFilter->setTau(0.972);
             _dogFilter->setHalfWidth(4);
             _dogFilter->setSketchiness(ofVec2f(1.0, 1.0));
 

@@ -14,6 +14,7 @@
 class PoissonBlendFilter : public AbstractTwoInputCrossTextureSamplingFilter {
 public:
 	PoissonBlendFilter(string blendImageUri, float width, float height, float mix=0.5, int numIterations=10);
+    PoissonBlendFilter(ofTexture & texture, float width, float height, float mix=0.5, int numIterations=10);
 	PoissonBlendFilter(float width, float height, float mix=0.5, int numIterations=10);
 	virtual ~PoissonBlendFilter();
 

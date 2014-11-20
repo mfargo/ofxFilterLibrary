@@ -16,8 +16,8 @@ public:
 	ZoomBlurFilter(float blurSize=1.f);
 	virtual ~ZoomBlurFilter();
 
-    virtual void    begin();
-
+    void            setBlurCenter(ofVec2f center);
+    
 protected:
     virtual string  _getFragSrc();
     float           _blurSize;
