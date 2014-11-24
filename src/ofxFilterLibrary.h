@@ -52,6 +52,7 @@
 #include "DisplacementFilter.h"
 #include "DoGFilter.h"
 #include "FilterChain.h"
+#include "HalftoneFilter.h"
 
 
 
