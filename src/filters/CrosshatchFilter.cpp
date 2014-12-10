@@ -32,7 +32,7 @@ string CrosshatchFilter::_getFragSrc() {
                            vec2 textureCoordinate = gl_TexCoord[0].xy;
                            float luminance = dot(texture2D(inputImageTexture, textureCoordinate).rgb, W);
 
-                           vec4 colorToDisplay = vec4(1.0, 1.0, 1.0, 1.0);
+                           vec4 colorToDisplay = vec4(1.0, 1.0, 1.0, 1.0); // use sample color?
                            if (luminance < 1.00)
                            {
                                if (mod(textureCoordinate.x + textureCoordinate.y, crosshatchSpacing) <= lineWidth)

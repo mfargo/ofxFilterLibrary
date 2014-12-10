@@ -20,6 +20,7 @@ void ofApp::setup(){
 
     
     _filters.push_back(new HalftoneFilter(_video.getWidth(), _video.getHeight(), 0.001));
+    _filters.push_back(new CrosshatchFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new KuwaharaFilter(6));
     _filters.push_back(new SobelEdgeDetectionFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new BilateralFilter(_video.getWidth(), _video.getHeight()));

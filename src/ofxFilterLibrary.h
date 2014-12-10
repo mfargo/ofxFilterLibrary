@@ -37,6 +37,7 @@
 #include "BrightnessFilter.h"
 #include "SaturationFilter.h"
 #include "HueFilter.h"
+#include "GammaFilter.h"
 #include "ContrastFilter.h"
 #include "AlphaBlendFilter.h"
 #include "AdditiveBlendFilter.h"
@@ -53,7 +54,7 @@
 #include "DoGFilter.h"
 #include "FilterChain.h"
 #include "HalftoneFilter.h"
-
+#include "CrosshatchFilter.h"
 
 
 #endif
