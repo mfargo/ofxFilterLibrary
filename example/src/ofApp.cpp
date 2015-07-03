@@ -7,7 +7,7 @@ void ofApp::setup(){
     _video.initGrabber(1280, 720);
     _currentFilter = 0;
 
-    
+        
     // here's a simple filter chain
     
     FilterChain * charcoal = new FilterChain(_video.getWidth(), _video.getHeight(), "Charcoal");
@@ -18,6 +18,7 @@ void ofApp::setup(){
     
         // Basic filter examples
 
+    
     
     _filters.push_back(new HalftoneFilter(_video.getWidth(), _video.getHeight(), 0.001));
     _filters.push_back(new CrosshatchFilter(_video.getWidth(), _video.getHeight()));

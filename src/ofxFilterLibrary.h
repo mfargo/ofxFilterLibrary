@@ -13,6 +13,7 @@
 #include "TiltShiftFilter.h"
 #include "KuwaharaFilter.h"
 #include "ToonFilter.h"
+#include "BloomFilter.h"
 #include "SmoothToonFilter.h"
 #include "CGAColorspaceFilter.h"
 #include "LookupFilter.h"

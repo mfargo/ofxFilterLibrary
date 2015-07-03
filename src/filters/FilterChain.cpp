@@ -12,7 +12,10 @@ FilterChain::FilterChain(float width, float height, string name, int internalFor
     _name = name;
         // don't set up shader, cuz there ain't neccesarily one
 }
-FilterChain::~FilterChain() {}
+FilterChain::~FilterChain() {
+    while (_filters.size()>0)
+        _filters.erase(_filters.begin());
+}
 
 
 void FilterChain::begin() {
