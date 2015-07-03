@@ -46,6 +46,7 @@
 #include "DarkenBlendFilter.h"
 #include "ColorBlendFilter.h"
 #include "ColorBurnFilter.h"
+#include "ChromaKeyBlendFilter.h"
 #include "PoissonBlendFilter.h"
 #include "ExclusionBlendFilter.h"
 #include "PosterizeFilter.h"
@@ -56,6 +57,6 @@
 #include "FilterChain.h"
 #include "HalftoneFilter.h"
 #include "CrosshatchFilter.h"
-
+#include "AlphaMaskFilter.h"
 
 #endif

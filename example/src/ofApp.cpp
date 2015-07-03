@@ -20,7 +20,7 @@ void ofApp::setup(){
 
     
     
-    _filters.push_back(new HalftoneFilter(_video.getWidth(), _video.getHeight(), 0.001));
+    _filters.push_back(new HalftoneFilter(_video.getWidth(), _video.getHeight(), 0.01));
     _filters.push_back(new CrosshatchFilter(_video.getWidth(), _video.getHeight()));
     _filters.push_back(new KuwaharaFilter(6));
     _filters.push_back(new SobelEdgeDetectionFilter(_video.getWidth(), _video.getHeight()));
@@ -50,6 +50,10 @@ void ofApp::setup(){
         // blending examples
     
     ofImage wes = ofImage("img/wes.jpg");
+    ChromaKeyBlendFilter * chroma = new ChromaKeyBlendFilter(ofVec3f(0.f, 1.f, 0.f), 0.4);
+    chroma->setSecondTexture(wes.getTextureReference());
+    _filters.push_back(chroma);
+    
     _filters.push_back(new DisplacementFilter("img/mandel.jpg", _video.getWidth(), _video.getHeight(), 25.f));
     _filters.push_back(new PoissonBlendFilter(wes.getTextureReference(), _video.getWidth(), _video.getHeight(), 2.0));
     _filters.push_back(new DisplacementFilter("img/glass/3.jpg", _video.getWidth(), _video.getHeight(), 40.0));

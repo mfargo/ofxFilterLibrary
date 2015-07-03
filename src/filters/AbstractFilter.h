@@ -13,6 +13,7 @@
 
 #include "ParametricObject.h"
 
+
 class AbstractFilter : public ParametricObject {
 public:
 	AbstractFilter(float width=0, float height=0);

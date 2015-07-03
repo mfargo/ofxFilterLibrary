@@ -1,20 +1,21 @@
 //
-//  AlphaBlendFilter.cpp
+//  AlphaMaskFilter.cpp
 //  ofxFilterLibrary
 //
 //  Created by Matthew Fargo on 2014/09/24.
 //
 //
 
-#include "AlphaBlendFilter.h"
+#include "AlphaMaskFilter.h"
 
-AlphaBlendFilter::AlphaBlendFilter(float mixturePercent) : AbstractTwoInputFilter() {
+AlphaMaskFilter::AlphaMaskFilter() : AbstractTwoInputFilter() {
     _setupShader();
-    _addParameter(new ParameterF("mixturePercent", mixturePercent));
 }
-AlphaBlendFilter::~AlphaBlendFilter() {}
+AlphaMaskFilter::~AlphaMaskFilter() {}
 
-string AlphaBlendFilter::_getFragSrc() {
+
+
+string AlphaMaskFilter::_getFragSrc() {
     return GLSL_STRING(120,
                        varying vec2 textureCoordinate;
                        
@@ -26,8 +27,9 @@ string AlphaBlendFilter::_getFragSrc() {
                        {
                            vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);
                            vec4 textureColor2 = texture2D(inputImageTexture2, textureCoordinate);
-                           gl_FragColor = vec4(mix(textureColor.rgb, textureColor2.rgb, textureColor2.a * mixturePercent), textureColor.a);
+                           float a = textureColor2.a;
+                           if (a > 0) a = textureColor.a * a;
+                           gl_FragColor = vec4(textureColor.rgb, a);
                        }
                        );
-
 }
