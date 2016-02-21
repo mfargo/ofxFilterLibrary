@@ -49,7 +49,7 @@ string SobelEdgeDetectionFilter::_getFragSrc() {
                            
                            float mag = length(vec2(h, v)) * edgeStrength;
                            
-                           gl_FragColor = vec4(vec3(mag), 1.0);
+                           gl_FragColor = vec4(vec3(1.0), mag);
                        }
                        );
 }

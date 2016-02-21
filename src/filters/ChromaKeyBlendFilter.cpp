@@ -9,7 +9,7 @@
 #include "ChromaKeyBlendFilter.h"
 
 ChromaKeyBlendFilter::ChromaKeyBlendFilter(ofVec3f keyColor, float thresholdSensitivity, float smoothing) {
-    _name = "Chroma Key";
+    _name = "Chroma Key Blend";
     _addParameter(new Parameter3f("keyColor", keyColor));
     _addParameter(new ParameterF("thresholdSensitivity", thresholdSensitivity));
     _addParameter(new ParameterF("smoothing", smoothing));
