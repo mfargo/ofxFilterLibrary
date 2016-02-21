@@ -20,28 +20,7 @@ PixelateFilter::~PixelateFilter() {}
 
 string PixelateFilter::_getFragSrc() {
 
-    string s = (ofGetGLProgrammableRenderer()) ?
-        GLSL_STRING(150,
-            uniform mat4 orientationMatrix;
-            uniform mat4 projectionMatrix;
-            uniform mat4 modelViewMatrix;
-            uniform mat4 textureMatrix;
-            uniform mat4 modelViewProjectionMatrix;
-            
-            in vec4  position;
-            in vec4  color;
-            in vec3  normal;
-            in float fractionalWidthOfPixel;
-            in float aspectRatio;
-            
-            out vec4 colorVarying;
-
-            void main()
-            {
-                colorVarying = color;
-            }
-        ) :
-        GLSL_STRING(120,
+    return GLSL_STRING(120,
             uniform sampler2D inputImageTexture;
             uniform float fractionalWidthOfPixel;
             uniform float aspectRatio;
@@ -53,5 +32,4 @@ string PixelateFilter::_getFragSrc() {
                 gl_FragColor = texture2D(inputImageTexture, samplePos);
             }
         );
-    return s;
 }
