@@ -11,7 +11,7 @@
 DisplacementFilter::DisplacementFilter(string imageUri, float width, float height, float strength) : AbstractTwoInputCrossTextureSamplingFilter(width, height, ofVec2f(strength, strength)) {
     _name = "Displacement";
     ofImage blendImage = ofImage(imageUri);
-    setSecondTexture(blendImage.getTextureReference());
+    setSecondTexture(blendImage.getTexture());
     _setupShader();
 }
 

@@ -19,7 +19,7 @@ public:
     virtual void    begin();
     virtual void    end();
     
-    ofTexture &     getTextureReference() { return _buffer.getTextureReference(); }
+    ofTexture &     getTextureReference() { return _buffer.getTexture(); }
 
 private:
     

@@ -56,14 +56,14 @@ void DoGFilter::end() {
     _edgeTangentFbo.end();
     
     
-    _directionalDoGFilter->setSecondTexture(_edgeTangentFbo.getTextureReference());
+    _directionalDoGFilter->setSecondTexture(_edgeTangentFbo.getTexture());
     _directionalFbo.begin();
     _directionalDoGFilter->begin();
     _imageFbo.draw(0, 0);
     _directionalDoGFilter->end();
     _directionalFbo.end();
     
-    _flowDoGFilter->setSecondTexture(_edgeTangentFbo.getTextureReference());
+    _flowDoGFilter->setSecondTexture(_edgeTangentFbo.getTexture());
     _flowDoGFilter->begin();
     _updateParameters(&_shader);
     _directionalFbo.draw(0, 0);

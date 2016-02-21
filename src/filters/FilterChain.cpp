@@ -50,8 +50,8 @@ void FilterChain::end() {
 }
 
 ofTexture & FilterChain::getTextureReference() {
-    if (_filters.size()%2==1 || _filters.size()==0) return _ping.getTextureReference();
-    else return _pong.getTextureReference();
+    if (_filters.size()%2==1 || _filters.size()==0) return _ping.getTexture();
+    else return _pong.getTexture();
 }
 
 

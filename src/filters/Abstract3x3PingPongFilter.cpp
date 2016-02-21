@@ -26,5 +26,5 @@ void Abstract3x3PingPongFilter::end() {
     _updateParameters(&_shader);
     pong();
     _shader.end();
-    _pong.getTextureReference().draw(0, 0);
+    _pong.getTexture().draw(0, 0);
 }

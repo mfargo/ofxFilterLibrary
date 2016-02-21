@@ -11,7 +11,7 @@
 ExclusionBlendFilter::ExclusionBlendFilter(string blendImageUri) {
     _name = "Exclusion Blend";
     ofImage blendImage = ofImage(blendImageUri);
-    setSecondTexture(blendImage.getTextureReference());
+    setSecondTexture(blendImage.getTexture());
     _setupShader();
 }
 ExclusionBlendFilter::ExclusionBlendFilter(ofTexture & texture) {

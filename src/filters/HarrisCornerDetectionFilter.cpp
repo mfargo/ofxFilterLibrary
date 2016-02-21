@@ -28,8 +28,8 @@ void HarrisCornerDetectionFilter::end() {
     for (int y=0; y<_filteredPixels.getHeight(); y++)
         for (int x=0; x<_filteredPixels.getWidth(); x++)
             if (_filteredPixels.getColor(x, y).r==0) {
-                ofLine(x, y-2, x, y+2);
-                ofLine(x-2, y, x+2, y);
+                ofDrawLine(x, y-2, x, y+2);
+                ofDrawLine(x-2, y, x+2, y);
             }
 
     ofSetColor(255);

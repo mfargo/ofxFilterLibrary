@@ -18,7 +18,7 @@ TiltShiftFilter::TiltShiftFilter(ofTexture & texture, float focusPercent, float 
     _addParameter(new ParameterF("bottomFocusLevel", 1.f - focusPercent));
     _addParameter(new ParameterF("focusFallOffRate", falloff));
     _addParameter(new ParameterT("inputImageTexture", _texture, 1));
-    _addParameter(new ParameterT("inputImageTexture2", _gaussianBlurFilter->getTextureReference(), 2));
+    _addParameter(new ParameterT("inputImageTexture2", _gaussianBlurFilter->getTexture(), 2));
     _setupShader();
 }
 TiltShiftFilter::~TiltShiftFilter() {}

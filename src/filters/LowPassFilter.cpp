@@ -11,7 +11,7 @@
 LowPassFilter::LowPassFilter(float width, float height, float mix) : DissolveBlendFilter(width, height, mix) {
     _name = "Low Pass";
     _buffer.allocate(getWidth(), getHeight());
-    setSecondTexture(_buffer.getTextureReference());
+    setSecondTexture(_buffer.getTexture());
 }
 LowPassFilter::~LowPassFilter() {}
 

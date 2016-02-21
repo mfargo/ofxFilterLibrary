@@ -11,7 +11,7 @@
 PoissonBlendFilter::PoissonBlendFilter(string blendImageUri, float width, float height, float mix, int numIterations) : AbstractTwoInputCrossTextureSamplingFilter(width, height, ofVec2f(1,1)) {
     _name = "Poisson Blend";
     ofImage blendImage = ofImage(blendImageUri);
-    setSecondTexture(blendImage.getTextureReference());
+    setSecondTexture(blendImage.getTexture());
     _addParameter(new ParameterF("mixturePercent", mix));
     _setupShader();
 }
